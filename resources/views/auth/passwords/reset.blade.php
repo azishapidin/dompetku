@@ -4,8 +4,8 @@
 @section('content')
 <form class="card" method="POST" action="{{ route('password.request') }}">
     @csrf
-
     <input type="hidden" name="token" value="{{ $token }}">
+    
     <div class="card-body p-6">
         <div class="card-title">{{ __('Password Reset') }}</div>
         <div class="form-group">

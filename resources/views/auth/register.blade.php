@@ -51,6 +51,7 @@
         </div>
     </div>
 </form>
+
 <div class="text-center text-muted">
     {{ __('Already have account?') }}
     <a href="{{ route('login') }}">{{ __('Login') }}</a>

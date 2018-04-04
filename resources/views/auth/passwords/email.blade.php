@@ -25,6 +25,7 @@
         </div>
     </div>
 </form>
+
 <div class="text-center text-muted">
     <a href="{{ route('login') }}">{{ __('Back to Login') }}</a>
 </div>

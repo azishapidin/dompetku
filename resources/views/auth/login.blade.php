@@ -34,6 +34,7 @@
         </div>
     </div>
 </form>
+
 <div class="text-center text-muted">
     {{ __("Don't have account yet?") }}
     <a href="{{ route('register') }}">{{ __("Sign Up") }}</a>
