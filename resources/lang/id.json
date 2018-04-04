@@ -1,0 +1,18 @@
+{
+    "Login": "Masuk",
+    "Register": "Daftar",
+    "Sign Up": "Daftar",
+    "Name": "Nama Lengkap",
+    "E-Mail Address": "Alamat Email",
+    "Already have account?": "Sudah punya Akun?",
+    "Password": "Password",
+    "Password Confirmation": "Konfirmasi Password",
+    "Remember Me": "Ingat Saya",
+    "Password Reset": "Reset Password",
+    "Enter your email address and your will get reset password link via email.": "Masukan Email Anda, kami Akan mengirimkan sebuah email untuk reset password Akun Anda.",
+    "Send Password Reset Link": "Kirim Link Reset Password",
+    "Back to Login": "Kembali ke Halaman Login",
+    "Forgot Your Password?": "Lupa Password?",
+    "Forgot Password": "Lupa Password",
+    "Reset Password": "Update Password"
+}
