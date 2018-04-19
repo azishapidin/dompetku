@@ -1,5 +1,10 @@
 <p align="center"><img src="public/assets/images/logo.png"></p>
 
+<p align="center">
+    [![Build Status](https://travis-ci.org/azishapidin/dompetku.svg?branch=master)](https://travis-ci.org/azishapidin/dompetku)
+    [![StyleCI](https://styleci.io/repos/127994456/shield?branch=master)](https://styleci.io/repos/127994456)
+</p>
+
 ## About DompetKu
 
 DompetKu is Open Source CMS Cashflow Management for multiple users and multiple Accounts, build with Laravel Framework (PHP).
