@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Account extends Model
 {
     /**
-     * Has many to Transaction
+     * Has many to Transaction.
      */
     public function transaction()
     {
@@ -15,7 +15,7 @@ class Account extends Model
     }
 
     /**
-     * Get last transaction from account's transaction
+     * Get last transaction from account's transaction.
      */
     public function getLastTransaction()
     {

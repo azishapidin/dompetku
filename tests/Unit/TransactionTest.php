@@ -2,70 +2,69 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Http\Controllers\Module\TransactionBuilder;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class TransactionTest extends TestCase
 {
     use RefreshDatabase;
 
     /**
-     * User
-     * 
+     * User.
+     *
      * @var \App\Model\User
      */
     protected $user;
 
     /**
-     * Account
-     * 
+     * Account.
+     *
      * @var \App\Model\Account
      */
     protected $account;
 
     /**
-     * First payload
-     * 
+     * First payload.
+     *
      * @var array
      */
     protected $payload = [];
 
     /**
-     * Second payload
-     * 
+     * Second payload.
+     *
      * @var array
      */
     protected $payload2 = [];
 
     /**
-     * Transaction Builder
-     * 
+     * Transaction Builder.
+     *
      * @var \App\Http\Controllers\Module\TransactionBuilder
      */
     protected $builder;
 
     /**
-     * Initialize data
+     * Initialize data.
      */
     private function initialize()
     {
         $this->user = factory(\App\Model\User::class)->create();
         $this->account = factory(\App\Model\Account::class)->create([
-            'user_id' => $this->user->id
+            'user_id' => $this->user->id,
         ]);
         $this->payload = [
-            'user_id' => $this->user->id,
-            'amount' => rand(1000, 100000),
+            'user_id'     => $this->user->id,
+            'amount'      => rand(1000, 100000),
             'description' => str_random(100),
-            'date' => date('Y-m-d')
+            'date'        => date('Y-m-d'),
         ];
         $this->payload2 = [
-            'user_id' => $this->user->id,
-            'amount' => rand(1000, 100000),
+            'user_id'     => $this->user->id,
+            'amount'      => rand(1000, 100000),
             'description' => str_random(100),
-            'date' => date('Y-m-d')
+            'date'        => date('Y-m-d'),
         ];
         $this->builder = new TransactionBuilder($this->account);
     }
@@ -120,7 +119,7 @@ class TransactionTest extends TestCase
         $this->builder->save();
 
         $this->assertEquals($this->builder->getBalance(), 0 - $this->payload['amount'] - $this->payload2['amount']);
-        $this->assertDatabaseHas('transactions', $this->payload2); 
+        $this->assertDatabaseHas('transactions', $this->payload2);
     }
 
     /** @test */

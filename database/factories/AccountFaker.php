@@ -16,7 +16,7 @@ use Faker\Generator as Faker;
 $factory->define(App\Model\Account::class, function (Faker $faker) {
     return [
         'user_id' => App\Model\User::all()->random()->id,
-        'name' => $faker->name,
-        'image' => str_random(30) . '.png',
+        'name'    => $faker->name,
+        'image'   => str_random(30).'.png',
     ];
 });
