@@ -1,9 +1,11 @@
 <p align="center"><img src="public/assets/images/logo.png"></p>
 
 <p align="center">
-    [![Build Status](https://travis-ci.org/azishapidin/dompetku.svg?branch=master)](https://travis-ci.org/azishapidin/dompetku)
-    [![StyleCI](https://styleci.io/repos/127994456/shield?branch=master)](https://styleci.io/repos/127994456)
+<a href="https://travis-ci.org/azishapidin/dompetku"><img src="https://travis-ci.org/azishapidin/dompetku.svg?branch=master" alt="Build Status"></a>
+<a href="https://styleci.io/repos/127994456"><img src="https://styleci.io/repos/127994456/shield?branch=master" alt="StyleCI"></a>
 </p>
+[![Build Status](https://travis-ci.org/azishapidin/dompetku.svg?branch=master)](https://travis-ci.org/azishapidin/dompetku)
+[![StyleCI](https://styleci.io/repos/127994456/shield?branch=master)](https://styleci.io/repos/127994456)
 
 ## About DompetKu
 
