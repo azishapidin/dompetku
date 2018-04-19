@@ -2,52 +2,52 @@
 
 namespace App\Http\Controllers\Module;
 
+use App\Http\Controllers\Controller;
 use App\Model\Account;
 use App\Model\Transaction;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 /**
- * Transaction Builder
- * 
+ * Transaction Builder.
+ *
  * @author  Azis Hapidin <azishapidin@gmail.com>
+ *
  * @link    https://azishapidin.com/
- * 
  */
 class TransactionBuilder extends Controller
 {
     /**
-     * Account balance
-     * 
+     * Account balance.
+     *
      * @var decimal
      */
     protected $balance = 0;
 
     /**
-     * Account model
-     * 
+     * Account model.
+     *
      * @var \App\Model\Account
      */
     protected $account;
-    
+
     /**
-     * Last transaction on this Account
-     * 
+     * Last transaction on this Account.
+     *
      * @var \App\Model\Transaction
      */
     protected $last;
 
     /**
-     * Data payload
-     * 
+     * Data payload.
+     *
      * @var array
      */
     protected $payload;
 
     /**
-     * Class constructor
-     * 
+     * Class constructor.
+     *
      * @param \App\Model\Account $account Account Model
+     *
      * @return void
      */
     public function __construct(Account $account)
@@ -57,7 +57,7 @@ class TransactionBuilder extends Controller
     }
 
     /**
-     * Initialize balance and setup Transaction payload
+     * Initialize balance and setup Transaction payload.
      */
     private function initializeData()
     {
@@ -70,7 +70,7 @@ class TransactionBuilder extends Controller
     }
 
     /**
-     * Setup payload to be stored in database
+     * Setup payload to be stored in database.
      */
     protected function setUpPayload()
     {
@@ -86,8 +86,8 @@ class TransactionBuilder extends Controller
     }
 
     /**
-     * Set amount, set type to db and decrease balance
-     * 
+     * Set amount, set type to db and decrease balance.
+     *
      * @param decimal $amount Transaction amount
      */
     public function addDebit($amount = 0)
@@ -98,8 +98,8 @@ class TransactionBuilder extends Controller
     }
 
     /**
-     * Set amount, set type to cr and increase balance
-     * 
+     * Set amount, set type to cr and increase balance.
+     *
      * @param decimal $amount Transaction amount
      */
     public function addCredit($amount = 0)
@@ -110,8 +110,8 @@ class TransactionBuilder extends Controller
     }
 
     /**
-     * Set payload description
-     * 
+     * Set payload description.
+     *
      * @param string $description Transaction note
      */
     public function setDescription($description = '')
@@ -120,8 +120,8 @@ class TransactionBuilder extends Controller
     }
 
     /**
-     * Set payload date
-     * 
+     * Set payload date.
+     *
      * @param string $date Transaction date
      */
     public function setDate($date = '')
@@ -130,8 +130,8 @@ class TransactionBuilder extends Controller
     }
 
     /**
-     * Store payload to database
-     * 
+     * Store payload to database.
+     *
      * @return \App\Model\Transaction
      */
     public function save()
@@ -143,7 +143,7 @@ class TransactionBuilder extends Controller
     }
 
     /**
-     * Get last transaction
+     * Get last transaction.
      */
     public function getLast()
     {
@@ -151,9 +151,9 @@ class TransactionBuilder extends Controller
     }
 
     /**
-     * Get balance of Account
-     * 
-     * @return integer Account balance
+     * Get balance of Account.
+     *
+     * @return int Account balance
      */
     public function getBalance()
     {
