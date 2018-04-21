@@ -76,7 +76,8 @@
 </body>
 
 </html> --}}
-@extends('layouts.master') @section('title') @yield('title') @endsection 
+@extends('layouts.master')
+@section('title') @yield('title') @endsection 
 
 @section('body')
 <div class="page">
@@ -84,7 +85,7 @@
         <div class="header">
             <div class="container">
                 <div class="d-flex">
-                    <a class="navbar-brand" href="./index.html">
+                    <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('assets/images/logo.png') }}" class="navbar-brand-img" alt="{{ config('app.name') }}">
                     </a>
                     <div class="ml-auto d-flex order-lg-2">
@@ -93,7 +94,7 @@
                         </div>
                         <div class="dropdown">
                             <a href="#" class="nav-link pr-0" data-toggle="dropdown">
-                                <span class="avatar" style="background-image: url({{ asset('assets/images/azishapidin.jpg') }})"></span>
+                                <span class="avatar" style="background-image: url({{ Gravatar::src(Auth::user()->email) }})"></span>
                                 <span class="ml-2 d-none d-lg-block">
                                     <span class="text-default">{{ Auth::user()->name }}</span>
                                     <small class="text-muted d-block mt-1">Superman</small>
