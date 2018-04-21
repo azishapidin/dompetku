@@ -12,7 +12,7 @@ namespace App\Http\Controllers;
 class AccountController extends Controller
 {
     /**
-     * Class Constructor
+     * Class Constructor.
      */
     public function __construct()
     {
