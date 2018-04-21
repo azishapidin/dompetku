@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 /**
- * Route Handler for Account
- * 
+ * Route Handler for Account.
+ *
  * @author  Azis Hapidin <azishapidin@gmail.com>
  *
  * @link    https://azishapidin.com/
