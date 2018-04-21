@@ -18,9 +18,9 @@ class CreateAccountsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('name');
             $table->string('image')->nullable();
-            $table->string('currency', 5);
+            $table->string('currency', 5)->default("IDR");
             $table->enum('currency_placement', ['before', 'after'])->default('before');
-            $table->decimal('balance', 13);
+            $table->decimal('balance', 13)->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

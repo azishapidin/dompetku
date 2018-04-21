@@ -12,6 +12,14 @@ namespace App\Http\Controllers;
 class AccountController extends Controller
 {
     /**
+     * Class Constructor
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Show form for create Account.
      *
      * @return \Illuminate\Http\Response
