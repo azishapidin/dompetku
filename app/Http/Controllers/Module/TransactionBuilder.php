@@ -62,9 +62,7 @@ class TransactionBuilder extends Controller
     private function initializeData()
     {
         $last = $this->account->getLastTransaction();
-        if (!is_null($last)) {
-            $this->balance = $last->balance;
-        }
+        $this->balance = $this->account->balance;
 
         $this->setUpPayload();
     }
@@ -137,6 +135,7 @@ class TransactionBuilder extends Controller
     public function save()
     {
         $this->last = Transaction::create($this->payload);
+        $this->account->balance = $this->last->balance;
         $this->initializeData();
 
         return $this->last;

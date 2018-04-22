@@ -25,6 +25,7 @@ class AccountController extends Controller
      * Class Constructor
      * 
      * @return void
+     * Class Constructor.
      */
     public function __construct()
     {
