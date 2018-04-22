@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Account;
 use App\Http\Requests\AccountStore;
+use App\Model\Account;
 
 /**
  * Route Handler for Account.
@@ -15,17 +15,17 @@ use App\Http\Requests\AccountStore;
 class AccountController extends Controller
 {
     /**
-     * Posted data
-     * 
+     * Posted data.
+     *
      * @var array
      */
     protected $posted;
 
     /**
-     * Class Constructor
-     * 
-     * @return void
      * Class Constructor.
+     *
+     * @return void
+     *              Class Constructor.
      */
     public function __construct()
     {
@@ -42,29 +42,30 @@ class AccountController extends Controller
         $currencies = config('currency');
 
         return view('account.create', [
-            'currencies' => $currencies
+            'currencies' => $currencies,
         ]);
     }
 
     /**
-     * Store Account to Database
-     * 
+     * Store Account to Database.
+     *
      * @param \App\Http\Requests\AccountStore $request Request from User after Validation
      */
     public function store(AccountStore $request)
     {
         $posted = $request->except(['_token', '_method']);
         if (!is_null($request->file('image'))) {
-            $fileName = $request->user()->id . '+' . md5(time());
+            $fileName = $request->user()->id.'+'.md5(time());
             $extension = $request->file('image')->getClientOriginalExtension();
             $path = $request->file('image')->storeAs(
-                config('account.image_path'), $fileName . '.' . $extension, 'public'
+                config('account.image_path'), $fileName.'.'.$extension, 'public'
             );
             $posted['image'] = $path;
         }
         $posted['user_id'] = $request->user()->id;
-        
+
         $account = Account::create($posted);
+
         return redirect()->back();
     }
 }
