@@ -25,7 +25,7 @@ class AccountStore extends FormRequest
     {
         return [
             'name'                  => 'required',
-            'currency'              => 'required|in:' . implode(',', array_keys(config('currency'))),
+            'currency'              => 'required|in:'.implode(',', array_keys(config('currency'))),
             'image'                 => 'image|max:500',
             'balance'               => 'numeric',
             'currency_placement'    => 'required|in:before,after',

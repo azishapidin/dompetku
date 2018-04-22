@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Account extends Model
 {
     /**
-     * Fillable column
-     * 
+     * Fillable column.
+     *
      * @var array
      */
     protected $fillable = [
