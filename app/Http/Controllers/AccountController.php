@@ -15,13 +15,6 @@ use App\Http\Requests\AccountStore;
 class AccountController extends Controller
 {
     /**
-     * Posted data
-     * 
-     * @var array
-     */
-    protected $posted;
-
-    /**
      * Class Constructor
      * 
      * @return void
