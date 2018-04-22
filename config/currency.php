@@ -12,31 +12,31 @@
 return [
 
     'IDR' => [
-        'name' => 'Rupiah',
+        'name'   => 'Rupiah',
         'symbol' => 'Rp',
     ],
     'SAR' => [
-        'name' => 'Saudi Riyal',
+        'name'   => 'Saudi Riyal',
         'symbol' => '﷼',
     ],
     'USD' => [
-        'name' => 'US Dollar',
+        'name'   => 'US Dollar',
         'symbol' => '$',
-    ], 
+    ],
     'AUD' => [
-        'name' => 'Australian Dollar',
+        'name'   => 'Australian Dollar',
         'symbol' => '$',
     ],
     'EUR' => [
-        'name' => 'Euro',
+        'name'   => 'Euro',
         'symbol' => '€',
     ],
     'GBP' => [
-        'name' => 'Pound Sterling',
+        'name'   => 'Pound Sterling',
         'symbol' => '£',
     ],
     'MYR' => [
-        'name' => 'Malaysian Ringgit',
+        'name'   => 'Malaysian Ringgit',
         'symbol' => 'RM',
     ],
-];  
+];
