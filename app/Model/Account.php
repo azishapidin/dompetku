@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Account extends Model
 {
     /**
-     * Fillable column.
+     * The attributes that are mass assignable.
      *
      * @var array
      */
@@ -34,5 +34,19 @@ class Account extends Model
     public function getLastTransaction()
     {
         return $this->transaction()->orderBy('id', 'desc')->first();
+    }
+
+    /**
+     * Get balance with currency format
+     * 
+     * @return string Formatted Balance
+     */
+    public function getFormattedBalanceAttribute()
+    {
+        $balance = $this->balance;
+        $currency = $this->currency;
+        $position = $this->currency_placement;
+
+        return currencyFormat($balance, $currency, $position);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AccountStore;
+use Illuminate\Http\Request;
 use App\Model\Account;
 
 /**
@@ -15,27 +16,29 @@ use App\Model\Account;
 class AccountController extends Controller
 {
     /**
-<<<<<<< HEAD
      * Class Constructor
      * 
      * @return void
-=======
-     * Posted data.
-     *
-     * @var array
-     */
-    protected $posted;
-
-    /**
->>>>>>> 3ca69da83db243d8ed1c366e0ec1490837788c35
-     * Class Constructor.
-     *
-     * @return void
-     *              Class Constructor.
      */
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /**
+     * Show list Account
+     * 
+     * @param \Illuminate\Http\Request $request User Request
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        $accounts = $request->user()->accounts;
+        
+        return view('account.index', [
+            'accounts' => $accounts,
+        ]);
     }
 
     /**
@@ -72,6 +75,6 @@ class AccountController extends Controller
 
         $account = Account::create($posted);
 
-        return redirect()->back();
+        return redirect()->route('account.index');
     }
 }

@@ -57,8 +57,8 @@
                             <li class="nav-item">
                                 <a href="javascript:void(0)" class="nav-link"><i class="fe fe-credit-card"></i> {{ __('Accounts') }}</a>
                                 <div class="nav-submenu nav">
-                                    <a href="#" class="nav-item">{{ __('Add Account') }} </a>
-                                    <a href="#" class="nav-item">{{ __('Show All Account') }} </a>
+                                    <a href="{{ route('account.create') }}" class="nav-item">{{ __('Add Account') }} </a>
+                                    <a href="{{ route('account.index') }}" class="nav-item">{{ __('Show All Account') }} </a>
                                 </div>
                             </li>
                         </ul>

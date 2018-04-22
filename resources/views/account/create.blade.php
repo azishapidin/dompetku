@@ -11,19 +11,7 @@
 
     <div class="row">
         <div class="col-md-4">
-            <div class="card card-profile">
-                <div class="card-header" style="background-image: url({{ asset('assets/images/cover.jpg') }});"></div>
-                <div class="card-body text-center">
-                    <img class="card-profile-img" src="{{ Gravatar::src(Auth::user()->email) }}">
-                    <h3 class="mb-3">{{ Auth::user()->name }}</h3>
-                    <p class="mb-4">
-                        Backend Engineer :D
-                    </p>
-                    <button class="btn btn-outline-primary btn-sm">
-                        <span class="fa fa-pencil"></span> {{ __("Update Profile") }}
-                    </button>
-                </div>
-            </div>
+            @include('part.profile')
         </div>
         <div class="col-md-8">
             <div class="card">
@@ -53,7 +41,7 @@
                             <label class="form-label">Currency</label>
                             <select name="currency" class="form-control{{ $errors->has('currency') ? ' is-invalid' : '' }}">
                                 @foreach ($currencies as $code => $currency)
-                                <option value="{{ $code }}" data-symbol="{{ $currency['symbol'] }}" @if($code==o ld( 'currency')) selected @endif>{{ $currency['name'] }} ({{ $currency['symbol'] }})</option>
+                                <option value="{{ $code }}" data-symbol="{{ $currency['symbol'] }}" @if($code==old( 'currency')) selected @endif>{{ $currency['name'] }} ({{ $currency['symbol'] }})</option>
                                 @endforeach
                             </select>
                             @if ($errors->has('currency'))
@@ -64,8 +52,8 @@
                         <div class="form-group">
                             <label class="form-label">Currency symbol placement</label>
                             <select name="currency_placement" class="form-control{{ $errors->has('currency_placement') ? ' is-invalid' : '' }}">
-                                <option value="before" @if( 'before'==o ld( 'currency_placement')) selected @endif>Before the Number</option>
-                                <option value="after" @if( 'after'==o ld( 'currency_placement')) selected @endif>After the Number</option>
+                                <option value="before" @if( 'before'==old( 'currency_placement')) selected @endif>Before the Number</option>
+                                <option value="after" @if( 'after'==old( 'currency_placement')) selected @endif>After the Number</option>
                             </select>
                             @if ($errors->has('currency_placement'))
                             <small class="invalid-feedback">{{ $errors->first('currency_placement') }}</small>
@@ -103,7 +91,9 @@
     </div>
 
 </div>
-@endsection @section('after_script')
+@endsection
+
+@section('after_script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
