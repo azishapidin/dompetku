@@ -16,25 +16,32 @@ use Illuminate\Http\Request;
 class AccountController extends Controller
 {
     /**
+     * Set Request POST / GET to Global
+     * @var \Illuminate\Http\Request
+     */
+    protected $request;
+
+    /**
      * Class Constructor.
+     * 
+     * @param \Illuminate\Http\Request $request User Request
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
+        $this->request = $request;
         $this->middleware('auth');
     }
 
     /**
      * Show list Account.
      *
-     * @param \Illuminate\Http\Request $request User Request
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index()
     {
-        $accounts = $request->user()->accounts;
+        $accounts = $this->request->user()->accounts;
 
         return view('account.index', [
             'accounts' => $accounts,
@@ -44,7 +51,7 @@ class AccountController extends Controller
     /**
      * Show form for create Account.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -59,6 +66,8 @@ class AccountController extends Controller
      * Store Account to Database.
      *
      * @param \App\Http\Requests\AccountStore $request Request from User after Validation
+     * 
+     * @return \Illuminate\Http\Response
      */
     public function store(AccountStore $request)
     {
@@ -76,5 +85,43 @@ class AccountController extends Controller
         $account = Account::create($posted);
 
         return redirect()->route('account.index');
+    }
+
+    /**
+     * Show edit form
+     * 
+     * @param \App\Model\Account $account Account Model
+     * 
+     * @return \Illuminate\View\View
+     */
+    public function edit(Account $account)
+    {
+        $currencies = config('currency');
+        if ($account->user_id != $this->request->user()->id) {
+            abort(403);
+        }
+
+        return view('account.edit', [
+            'account' => $account,
+            'currencies' => $currencies,
+        ]);
+    }
+
+    /**
+     * Store Account to Database.
+     *
+     * @param \App\Http\Requests\AccountStore $request Request from User after Validation
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Account $account, AccountStore $request)
+    {
+        if ($account->user_id != $this->request->user()->id) {
+            abort(403);
+        }
+        $posted = $request->except(['_token', '_method']);
+        $update = $account->update($posted);
+
+        return redirect()->route('account.edit', $account->id);
     }
 }

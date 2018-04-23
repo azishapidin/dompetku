@@ -19,11 +19,10 @@
                 <table class="table card-table table-vcenter text-nowrap">
                     <thead>
                         <tr>
-                            <th class="w-1">No.</th>
-                            <th>Name</th>
-                            <th>Currency</th>
-                            <th>Balance</th>
-                            <th></th>
+                            <th class="w-1">#</th>
+                            <th>{{ __('Account Name') }}</th>
+                            <th>{{ __('Currency') }}</th>
+                            <th>{{ __('Balance') }}</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -33,19 +32,21 @@
                             <td>
                                 <span class="text-muted">{{ $key + 1 }}</span>
                             </td>
-                            <td>{{ $account->name }}</td>
+                            <td><a href="{{ route('account.show', $account->id) }}">{{ $account->name }}  <span class="fa fa-external-link"></span></a></td>
                             <td><strong>{{ $account->currency }}</strong></td>
                             <td>{{ $account->formattedBalance }}</td>
                             <td class="text-right">
-                                <a href="javascript:void(0)" class="btn btn-secondary btn-sm">Show Transaction</a>
+                                <a href="javascript:void(0)" class="btn btn-secondary btn-sm">{{ __('Add Transaction') }}</a>
                                 <div class="dropdown">
-                                    <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">Actions</button>
+                                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">
+                                       <i class="fe fe-grid mr-2"></i> {{ __('Actions') }}
+                                    </button>
+                                    <div class="dropdown-menu">
+                                      <a class="dropdown-item" href="{{ route('account.show', $account->id) }}">{{ __('Show Transaction') }}</a>
+                                      <a class="dropdown-item" href="{{ route('account.edit', $account->id) }}">{{ __('Edit Account') }}</a>
+                                      <a class="dropdown-item" href="#">{{ __('Move to Trash') }}</a>
+                                    </div>
                                 </div>
-                            </td>
-                            <td>
-                                <a class="icon" href="javascript:void(0)">
-                                    <i class="fe fe-folder-plus"></i>
-                                </a>
                             </td>
                         </tr>
                         @endforeach

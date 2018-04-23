@@ -14,5 +14,26 @@
     "Back to Login": "Kembali ke Halaman Login",
     "Forgot Your Password?": "Lupa Password?",
     "Forgot Password": "Lupa Password",
-    "Reset Password": "Update Password"
+    "Reset Password": "Update Password",
+
+    "Account": "Akun",
+    "Account Name": "Nama Akun",
+    "Currency": "Mata Uang",
+    "Balance": "Saldo",
+    "Show Transaction": "Lihat Transaksi",
+    "Edit Account": "Edit Akun",
+    "Move to Trash": "Buang",
+    "Create Account": "Buat Akun",
+    "Add Transaction": "Tambah Transaksi",
+    "Account Information": "Informasi Akun",
+    "Account Image/Icon": "Gambar Akun",
+    "By default, account image is a wallet icon, max file size is 500kb.": "Opsional, ukuran maksimal file adalah 500kb.",
+    "Currency symbol placement": "Posisi Mata Uang",
+    "Before the Number": "Sebelum nominal",
+    "After the Number": "Setelah nominal",
+    "Insert current Account balance": "Masukan saldo saat ini",
+    "Current Balance": "Saldo",
+    "Cancel": "Batalkan",
+    "Save Account": "Simpan Akun",
+    "Actions": "Aksi"
 }
