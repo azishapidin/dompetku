@@ -16,14 +16,15 @@ use Illuminate\Http\Request;
 class AccountController extends Controller
 {
     /**
-     * Set Request POST / GET to Global
+     * Set Request POST / GET to Global.
+     *
      * @var \Illuminate\Http\Request
      */
     protected $request;
 
     /**
      * Class Constructor.
-     * 
+     *
      * @param \Illuminate\Http\Request $request User Request
      *
      * @return void
@@ -66,7 +67,7 @@ class AccountController extends Controller
      * Store Account to Database.
      *
      * @param \App\Http\Requests\AccountStore $request Request from User after Validation
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(AccountStore $request)
@@ -88,10 +89,10 @@ class AccountController extends Controller
     }
 
     /**
-     * Show edit form
-     * 
+     * Show edit form.
+     *
      * @param \App\Model\Account $account Account Model
-     * 
+     *
      * @return \Illuminate\View\View
      */
     public function edit(Account $account)
@@ -102,7 +103,7 @@ class AccountController extends Controller
         }
 
         return view('account.edit', [
-            'account' => $account,
+            'account'    => $account,
             'currencies' => $currencies,
         ]);
     }
@@ -111,7 +112,7 @@ class AccountController extends Controller
      * Store Account to Database.
      *
      * @param \App\Http\Requests\AccountStore $request Request from User after Validation
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Account $account, AccountStore $request)
