@@ -23,8 +23,8 @@ DompetKu is Open Source CMS Cashflow Management for multiple users and multiple 
 
 ## License
 
-The DompetKu is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The DompetKu is open-sourced software licensed under the [Creative Commons Attribution NonCommercial (CC-BY-NC)](https://tldrlegal.com/license/creative-commons-attribution-noncommercial-(cc-nc)).
+
+## Contributor
 
 Author: [Azis Hapidin](https://azishapidin.com/) 
-
-Contributors:
