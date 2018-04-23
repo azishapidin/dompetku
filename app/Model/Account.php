@@ -37,8 +37,8 @@ class Account extends Model
     }
 
     /**
-     * Get balance with currency format
-     * 
+     * Get balance with currency format.
+     *
      * @return string Formatted Balance
      */
     public function getFormattedBalanceAttribute()

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AccountStore;
-use Illuminate\Http\Request;
 use App\Model\Account;
+use Illuminate\Http\Request;
 
 /**
  * Route Handler for Account.
@@ -16,8 +16,8 @@ use App\Model\Account;
 class AccountController extends Controller
 {
     /**
-     * Class Constructor
-     * 
+     * Class Constructor.
+     *
      * @return void
      */
     public function __construct()
@@ -26,16 +26,16 @@ class AccountController extends Controller
     }
 
     /**
-     * Show list Account
-     * 
+     * Show list Account.
+     *
      * @param \Illuminate\Http\Request $request User Request
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         $accounts = $request->user()->accounts;
-        
+
         return view('account.index', [
             'accounts' => $accounts,
         ]);
