@@ -137,7 +137,7 @@ class AccountController extends Controller
      * Softdelete Account.
      * 
      * @param \App\Model\Account $account Account Model
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Account $account)
