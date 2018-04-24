@@ -135,7 +135,7 @@ class AccountController extends Controller
 
     /**
      * Softdelete Account.
-     * 
+     *
      * @param \App\Model\Account $account Account Model
      *
      * @return \Illuminate\Http\Response
@@ -152,9 +152,9 @@ class AccountController extends Controller
 
     /**
      * Restore Account, set deleted_at to null.
-     * 
+     *
      * @param \App\Model\Account $account Account Model
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function restore(Account $account)
@@ -168,9 +168,9 @@ class AccountController extends Controller
 
     /**
      * Permanenty delete from database.
-     * 
+     *
      * @param \App\Model\Account $account Account Model
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function deletePermanent(Account $account)
