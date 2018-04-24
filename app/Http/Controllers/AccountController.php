@@ -42,11 +42,18 @@ class AccountController extends Controller
      */
     public function index()
     {
-        $accounts = $this->request->user()->accounts;
+        $data['showDeleted'] = false;
+        if ($this->request->get('show') == 'trash') {
+            $data['showDeleted'] = true;
+        }
 
-        return view('account.index', [
-            'accounts' => $accounts,
-        ]);
+        if ($data['showDeleted']) {
+            $data['accounts'] = $this->request->user()->deletedAccounts();
+        } else {
+            $data['accounts'] = $this->request->user()->accounts;
+        }
+
+        return view('account.index', $data);
     }
 
     /**
@@ -141,5 +148,38 @@ class AccountController extends Controller
         $account->delete();
 
         return redirect()->route('account.index');
+    }
+
+    /**
+     * Restore Account
+     * Set deleted_at to null
+     * 
+     * @param \App\Model\Account $account Account Model
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function restore(Account $account)
+    {
+        if ($account->user_id != $this->request->user()->id) {
+            abort(403);
+        }
+
+        // restore
+    }
+
+    /**
+     * Permanenty delete from database
+     * 
+     * @param \App\Model\Account $account Account Model
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function deletePermanent(Account $account)
+    {
+        if ($account->user_id != $this->request->user()->id) {
+            abort(403);
+        }
+        
+        // delete
     }
 }

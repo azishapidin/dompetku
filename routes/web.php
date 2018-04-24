@@ -19,4 +19,8 @@ Auth::routes();
 Route::get('lang/{lang}', 'LanguageController@switchLang')->name('lang.switch');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Account Controller
 Route::resource('/account', 'AccountController');
+Route::get('/account/{account}/restore', 'AccountController@restore')->name('account.restore');
+Route::get('/account/{account}/permanent', 'AccountController@deletePermanent')->name('account.deletePermanent');

@@ -18,6 +18,14 @@
             @include('part.profile')
         </div>
         <div class="col-md-8">
+            <div class="account-type" style="margin-bottom: 10px;">
+                <a href="{{ route('account.create') }}"><button class="btn btn-success">{{ __('Add Account') }}</button></a>
+                <a href="{{ route('account.index') }}"><button class="btn @if(!$showDeleted) btn-primary disabled @endif" @if(!$showDeleted) disabled @endif>{{ __('Show Active Account') }}</button></a>
+                <a href="{{ route('account.index', [
+                    'show' => 'trash'
+                ]) }}"><button class="btn @if($showDeleted) btn-primary disabled @endif" @if($showDeleted) disabled @endif>{{ __('Show Trash') }}</button></a>
+            </div>
+
             <div class="card">
                 {{-- Table --}}
                 <table class="table card-table table-vcenter text-nowrap">
@@ -40,21 +48,29 @@
                             <td><strong>{{ $account->currency }}</strong></td>
                             <td>{{ $account->formattedBalance }}</td>
                             <td class="text-right">
+                                @if (is_null($account->deleted_at))
                                 <a href="javascript:void(0)" class="btn btn-secondary btn-sm">{{ __('Add Transaction') }}</a>
+                                @endif
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">
                                        <i class="fe fe-grid mr-2"></i> {{ __('Actions') }}
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{{ route('account.show', $account->id) }}">{{ __('Show Transaction') }}</a>
-                                        <a class="dropdown-item" href="{{ route('account.edit', $account->id) }}">{{ __('Edit Account') }}</a>
-                                        <a class="dropdown-item" onclick="event.preventDefault();
-                                            document.getElementById('delete-{{ $account->id }}').submit();"> {{ __('Move to Trash') }}</a>
+                                        @if (!is_null($account->deleted_at))
+                                            <a class="dropdown-item" href="{{ route('account.restore', $account->id) }}">{{ __('Restore Account') }}</a>
+                                            <a class="dropdown-item" href="{{ route('account.deletePermanent', $account->id) }}">{{ __('Delete Permanently') }}</a>   
+                                        @endif
+                                        @if (is_null($account->deleted_at))
+                                            <a class="dropdown-item" href="{{ route('account.show', $account->id) }}">{{ __('Show Transaction') }}</a>
+                                            <a class="dropdown-item" href="{{ route('account.edit', $account->id) }}">{{ __('Edit Account') }}</a>
+                                            <a class="dropdown-item" onclick="event.preventDefault();
+                                                document.getElementById('delete-{{ $account->id }}').submit();"> {{ __('Move to Trash') }}</a>
 
-                                        <form id="delete-{{ $account->id }}" action="{{ route('account.destroy', $account->id) }}" method="POST" style="display:none">
-                                            {{ method_field('delete') }}
-                                            {{ csrf_field() }}
-                                        </form>
+                                            <form id="delete-{{ $account->id }}" action="{{ route('account.destroy', $account->id) }}" method="POST" style="display:none">
+                                                {{ method_field('delete') }}
+                                                {{ csrf_field() }}
+                                            </form>
+                                        @endif
                                     </div>
                                 </div>
                             </td>

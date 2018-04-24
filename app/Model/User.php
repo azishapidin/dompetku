@@ -34,4 +34,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Account::class);
     }
+
+    /**
+     * Get deleted Account.
+     */
+    public function deletedAccounts()
+    {
+        return $this->accounts()->withTrashed()->whereNotNull('deleted_at')->get();
+    }
 }
