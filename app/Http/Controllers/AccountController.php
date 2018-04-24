@@ -127,10 +127,10 @@ class AccountController extends Controller
     }
 
     /**
-     * Softdelete Account
-     * 
+     * Softdelete Account.
+     *
      * @param \App\Model\Account $account Account Model
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Account $account)
