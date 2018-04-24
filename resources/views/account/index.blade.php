@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('title', __('Account'))
 
+@section('before_script')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="page-header">
@@ -42,9 +46,15 @@
                                        <i class="fe fe-grid mr-2"></i> {{ __('Actions') }}
                                     </button>
                                     <div class="dropdown-menu">
-                                      <a class="dropdown-item" href="{{ route('account.show', $account->id) }}">{{ __('Show Transaction') }}</a>
-                                      <a class="dropdown-item" href="{{ route('account.edit', $account->id) }}">{{ __('Edit Account') }}</a>
-                                      <a class="dropdown-item" href="#">{{ __('Move to Trash') }}</a>
+                                        <a class="dropdown-item" href="{{ route('account.show', $account->id) }}">{{ __('Show Transaction') }}</a>
+                                        <a class="dropdown-item" href="{{ route('account.edit', $account->id) }}">{{ __('Edit Account') }}</a>
+                                        <a class="dropdown-item" onclick="event.preventDefault();
+                                            document.getElementById('delete-{{ $account->id }}').submit();"> {{ __('Move to Trash') }}</a>
+
+                                        <form id="delete-{{ $account->id }}" action="{{ route('account.destroy', $account->id) }}" method="POST" style="display:none">
+                                            {{ method_field('delete') }}
+                                            {{ csrf_field() }}
+                                        </form>
                                     </div>
                                 </div>
                             </td>
@@ -58,4 +68,9 @@
     </div>
 
 </div>
+@endsection
+
+@section('after_script')
+
+</script>
 @endsection

@@ -125,4 +125,21 @@ class AccountController extends Controller
 
         return redirect()->route('account.edit', $account->id);
     }
+
+    /**
+     * Softdelete Account
+     * 
+     * @param \App\Model\Account $account Account Model
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Account $account)
+    {
+        if ($account->user_id != $this->request->user()->id) {
+            abort(403);
+        }
+        $account->delete();
+
+        return redirect()->route('account.index');
+    }
 }

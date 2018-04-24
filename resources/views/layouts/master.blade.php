@@ -26,9 +26,9 @@
     
     <script src="{{ asset('/assets/js/require.min.js') }}"></script>
     <script>
-      requirejs.config({
-          baseUrl: "{{ asset('') }}"
-      		});
+        requirejs.config({
+            baseUrl: "."
+        });    
     </script>
     
     <!-- Dashboard Core -->
@@ -39,18 +39,15 @@
     <link href="{{ asset('assets/plugins/charts-c3/plugin.css') }}" rel="stylesheet" />
     <script src="{{ asset('assets/plugins/charts-c3/plugin.js') }}"></script>
 
-    <!-- Google Maps Plugin -->
-    <link href="{{ asset('assets/plugins/maps-google/plugin.css') }}" rel="stylesheet" />
-    <script src="{{ asset('assets/plugins/maps-google/plugin.js') }}"></script>
-
     <!-- Input Mask Plugin -->
     <script src="{{ asset('assets/plugins/input-mask/plugin.js') }}"></script>
+    
+    @yield('before_script')
 </head>
 
 <body class="">
     @yield('body')
+    @yield('after_script')
 </body>
-
-@yield('after_script')
 
 </html>
