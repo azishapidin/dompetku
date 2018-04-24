@@ -134,7 +134,7 @@ class AccountController extends Controller
     }
 
     /**
-     * Softdelete Account
+     * Softdelete Account.
      * 
      * @param \App\Model\Account $account Account Model
      * 
@@ -151,8 +151,7 @@ class AccountController extends Controller
     }
 
     /**
-     * Restore Account
-     * Set deleted_at to null
+     * Restore Account, set deleted_at to null.
      * 
      * @param \App\Model\Account $account Account Model
      * 
@@ -168,7 +167,7 @@ class AccountController extends Controller
     }
 
     /**
-     * Permanenty delete from database
+     * Permanenty delete from database.
      * 
      * @param \App\Model\Account $account Account Model
      * 
@@ -179,7 +178,7 @@ class AccountController extends Controller
         if ($account->user_id != $this->request->user()->id) {
             abort(403);
         }
-        
+
         // delete
     }
 }
