@@ -162,8 +162,9 @@ class AccountController extends Controller
         if ($account->user_id != $this->request->user()->id) {
             abort(403);
         }
+        $account->restore();
 
-        // restore
+        return redirect()->route('account.index');
     }
 
     /**
@@ -178,7 +179,8 @@ class AccountController extends Controller
         if ($account->user_id != $this->request->user()->id) {
             abort(403);
         }
+        $account->forceDelete();
 
-        // delete
+        return redirect()->route('account.index');
     }
 }
