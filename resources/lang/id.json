@@ -35,5 +35,10 @@
     "Current Balance": "Saldo",
     "Cancel": "Batalkan",
     "Save Account": "Simpan Akun",
-    "Actions": "Aksi"
+    "Actions": "Aksi",
+    "Show Active Account": "Akun Aktif",
+    "Show Trash": "Tong Sampah",
+    "No data found": "Tidak ada data ditemukan",
+    "Restore Account": "Kembalikan Akun",
+    "Delete Permanently": "Hapus Permanen"
 }

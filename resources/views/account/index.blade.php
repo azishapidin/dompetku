@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-8">
             <div class="account-type" style="margin-bottom: 10px;">
-                <a href="{{ route('account.create') }}"><button class="btn btn-success">{{ __('Add Account') }}</button></a>
+                <a href="{{ route('account.create') }}"><button class="btn btn-success">{{ __('Create Account') }}</button></a>
                 <a href="{{ route('account.index') }}"><button class="btn @if(!$showDeleted) btn-primary disabled @endif" @if(!$showDeleted) disabled @endif>{{ __('Show Active Account') }}</button></a>
                 <a href="{{ route('account.index', [
                     'show' => 'trash'
