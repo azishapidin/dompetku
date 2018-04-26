@@ -153,7 +153,7 @@ class AccountController extends Controller
     /**
      * Restore Account, set deleted_at to null.
      *
-     * @param integer $id Account ID
+     * @param int $id Account ID
      *
      * @return \Illuminate\Http\Response
      */
@@ -171,7 +171,7 @@ class AccountController extends Controller
     /**
      * Permanenty delete from database.
      *
-     * @param integer $id Account ID
+     * @param int $id Account ID
      *
      * @return \Illuminate\Http\Response
      */
