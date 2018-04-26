@@ -39,6 +39,11 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @if($accounts->isEmpty())
+                        <tr>
+                            <td colspan="5" class="text-center">{{ __('No data found') }}</td>
+                        </tr>
+                        @endif
                         @foreach($accounts as $key => $account)
                         <tr>
                             <td>
