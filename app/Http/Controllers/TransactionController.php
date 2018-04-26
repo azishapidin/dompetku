@@ -35,10 +35,10 @@ class TransactionController extends Controller
     }
 
     /**
-     * Create Transaction
-     * 
-     * @param integer $accountId Account ID
-     * 
+     * Create Transaction.
+     *
+     * @param int $accountId Account ID
+     *
      * @return \Illuminate\View\View
      */
     public function create($accountId = 0)
@@ -49,7 +49,7 @@ class TransactionController extends Controller
         }
 
         return view('transaction.create', [
-            'account' => $account
+            'account' => $account,
         ]);
     }
 }

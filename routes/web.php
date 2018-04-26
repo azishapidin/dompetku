@@ -22,11 +22,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Account Controller
 Route::resource('/account', 'AccountController')->except([
-    'show'
+    'show',
 ]);
 Route::get('/account/{id}/restore', 'AccountController@restore')->name('account.restore');
 Route::get('/account/{id}/permanent', 'AccountController@deletePermanent')->name('account.deletePermanent');
-
 
 // Transaction Controller
 Route::get('/account/{accountId}/add', 'TransactionController@create')->name('transaction.create');
