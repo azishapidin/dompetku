@@ -24,10 +24,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         parent::boot();
-
-        Route::model('account', function($id) {
-            return \App\Model\Account::withTrashed()->where('id', $id)->first();
-        });
     }
 
     /**

@@ -22,5 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Account Controller
 Route::resource('/account', 'AccountController');
-Route::get('/account/{account}/restore', 'AccountController@restore')->name('account.restore');
-Route::get('/account/{account}/permanent', 'AccountController@deletePermanent')->name('account.deletePermanent');
+Route::get('/account/{id}/restore', 'AccountController@restore')->name('account.restore');
+Route::get('/account/{id}/permanent', 'AccountController@deletePermanent')->name('account.deletePermanent');

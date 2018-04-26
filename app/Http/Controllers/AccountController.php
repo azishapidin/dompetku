@@ -153,12 +153,13 @@ class AccountController extends Controller
     /**
      * Restore Account, set deleted_at to null.
      *
-     * @param \App\Model\Account $account Account Model
+     * @param integer $id Account ID
      *
      * @return \Illuminate\Http\Response
      */
-    public function restore(Account $account)
+    public function restore($id = 0)
     {
+        $account = Account::withTrashed()->findOrFail($id);
         if ($account->user_id != $this->request->user()->id) {
             abort(403);
         }
@@ -170,12 +171,13 @@ class AccountController extends Controller
     /**
      * Permanenty delete from database.
      *
-     * @param \App\Model\Account $account Account Model
+     * @param integer $id Account ID
      *
      * @return \Illuminate\Http\Response
      */
-    public function deletePermanent(Account $account)
+    public function deletePermanent($id = 0)
     {
+        $account = Account::withTrashed()->findOrFail($id);
         if ($account->user_id != $this->request->user()->id) {
             abort(403);
         }
