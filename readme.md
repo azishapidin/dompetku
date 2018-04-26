@@ -16,7 +16,7 @@ DompetKu is Open Source CMS Cashflow Management for multiple users and multiple 
 - [x] Install Authentication (Register, Login, Forgot Password, Reset Password).
 - [x] Templating Authentication.
 - [x] Create Builder Income and Expenses.
-- [ ] CRUD Accounts.
+- [x] CRUD Accounts.
 - [ ] Form Add Income and Expenses data.
 - [ ] List Data Income and Expenses.
 - [ ] Account Settings.
