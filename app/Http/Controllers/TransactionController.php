@@ -57,6 +57,11 @@ class TransactionController extends Controller
 
     /**
      * Store transaction to database.
+     * 
+     * @param App\Http\Requests\TransactionStore $request Request from User after Validation
+     * @param integer $accountId Account ID
+     * 
+     * @return \Illuminate\Http\Response
      */
     public function store(TransactionStore $request, $accountId = 0)
     {
