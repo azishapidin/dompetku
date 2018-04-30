@@ -136,6 +136,7 @@ class TransactionBuilder extends Controller
     {
         $this->last = Transaction::create($this->payload);
         $this->account->balance = $this->last->balance;
+        $this->account->save();
         $this->initializeData();
 
         return $this->last;
