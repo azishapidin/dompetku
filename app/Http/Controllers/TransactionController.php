@@ -66,6 +66,9 @@ class TransactionController extends Controller
     public function store(TransactionStore $request, $accountId = 0)
     {
         $account = Account::withTrashed()->findOrFail($accountId);
+        if ($account->user_id != $this->request->user()->id) {
+            abort(403);
+        }
         $posted = $request->except(['_token', '_method']);
 
         $builder = new TransactionBuilder($account);
