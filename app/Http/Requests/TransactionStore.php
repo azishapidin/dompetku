@@ -27,7 +27,7 @@ class TransactionStore extends FormRequest
             'type'          => 'required|in:cr,db',
             'amount'        => 'required|numeric',
             'date'          => 'required|date_format:"Y-m-d"',
-            'description'   => 'required|max:255'
+            'description'   => 'required|max:255',
         ];
     }
 }
