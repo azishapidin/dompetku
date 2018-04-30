@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-8">
             <div class="card">
-                <form action="{{ route('account.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('transaction.store', $account->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-header">
                         <h3 class="card-title">{{ __("Add :account Transaction", ['account' => $account->name]) }}</h3>
@@ -27,8 +27,8 @@
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Transaction Type') }}</label>
                                     <select name="type" class="form-control{{ $errors->has('type') ? ' is-invalid' : '' }}">
-                                        <option value="before" @if( 'cr' == old( 'type')) selected @endif>{{ __('Credit/Income') }}</option>
-                                        <option value="after" @if( 'db' == old( 'type')) selected @endif>{{ __('Debit/Expense') }}</option>
+                                        <option value="cr" @if( 'cr' == old( 'type')) selected @endif>{{ __('Credit/Income') }}</option>
+                                        <option value="db" @if( 'db' == old( 'type')) selected @endif>{{ __('Debit/Expense') }}</option>
                                     </select>
                                     @if ($errors->has('type'))
                                     <small class="invalid-feedback">{{ $errors->first('type') }}</small>
@@ -48,12 +48,25 @@
 
                         </div>
                         
-                        <div class="form-group">
-                            <label class="form-label">{{ __('Memo') }}</label>
-                            <textarea name="description" class="form-control" placeholder="{{ __('Insert transaction memo') }}..">{{ old('description') }}</textarea>
-                            @if ($errors->has('description'))
-                            <small class="invalid-feedback">{{ $errors->first('description') }}</small>
-                            @endif
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="form-label">{{ __('Date') }}</label>
+                                    <input class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" placeholder="{{ __('Transaction Date') }}.." type="text"
+                                        value="{{ old('date') }}"> @if ($errors->has('date'))
+                                    <small class="invalid-feedback">{{ $errors->first('date') }}</small>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label class="form-label">{{ __('Memo') }}</label>
+                                    <textarea name="description" class="form-control" placeholder="{{ __('Insert transaction memo') }}..">{{ old('description') }}</textarea>
+                                    @if ($errors->has('description'))
+                                    <small class="invalid-feedback">{{ $errors->first('description') }}</small>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
 
                     </div>

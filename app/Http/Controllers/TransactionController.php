@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Account;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Module\TransactionBuilder;
 
 /**
  * Route Handler for Transaction.
@@ -51,5 +52,28 @@ class TransactionController extends Controller
         return view('transaction.create', [
             'account' => $account,
         ]);
+    }
+
+    /**
+     * Store transaction to database.
+     * 
+     * 
+     */
+    public function store(Request $request, $accountId = 0)
+    {
+        $account = Account::withTrashed()->findOrFail($accountId);
+        $posted = $request->except(['_token', '_method']);
+
+        $builder = new TransactionBuilder($account);
+        if ($posted['type'] == 'cr') {
+            $builder->addCredit($posted['amount']);
+        } elseif ($posted['type'] == 'db') {
+            $builder->addDebit($posted['amount']);
+        }
+        $builder->setDescription($posted['description']);
+        $builder->setDate($posted['date']);
+        $builder->save();
+
+        return redirect()->route('account.show', $account->id);
     }
 }

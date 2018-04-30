@@ -27,3 +27,4 @@ Route::get('/account/{id}/permanent', 'AccountController@deletePermanent')->name
 
 // Transaction Controller
 Route::get('/account/{accountId}/add', 'TransactionController@create')->name('transaction.create');
+Route::post('/account/{accountId}/add', 'TransactionController@store')->name('transaction.store');

@@ -54,7 +54,7 @@
                             <td>{{ $account->formattedBalance }}</td>
                             <td class="text-right">
                                 @if (is_null($account->deleted_at))
-                                <a href="javascript:void(0)" class="btn btn-secondary btn-sm">{{ __('Add Transaction') }}</a>
+                                <a href="{{ route('transaction.create', $account->id) }}" class="btn btn-secondary btn-sm">{{ __('Add Transaction') }}</a>
                                 @endif
                                 <div class="dropdown">
                                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown">
