@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Account;
 use Illuminate\Http\Request;
+use App\Http\Requests\TransactionStore;
 use App\Http\Controllers\Module\TransactionBuilder;
 
 /**
@@ -59,7 +60,7 @@ class TransactionController extends Controller
      * 
      * 
      */
-    public function store(Request $request, $accountId = 0)
+    public function store(TransactionStore $request, $accountId = 0)
     {
         $account = Account::withTrashed()->findOrFail($accountId);
         $posted = $request->except(['_token', '_method']);

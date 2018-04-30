@@ -63,7 +63,7 @@
                                     <label class="form-label">{{ __('Memo') }}</label>
                                     <textarea name="description" class="form-control" placeholder="{{ __('Insert transaction memo') }}..">{{ old('description') }}</textarea>
                                     @if ($errors->has('description'))
-                                    <small class="invalid-feedback">{{ $errors->first('description') }}</small>
+                                    <small class="text-danger">{{ $errors->first('description') }}</small>
                                     @endif
                                 </div>
                             </div>
