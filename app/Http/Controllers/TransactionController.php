@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Module\TransactionBuilder;
+use App\Http\Requests\TransactionStore;
 use App\Model\Account;
 use Illuminate\Http\Request;
-use App\Http\Requests\TransactionStore;
-use App\Http\Controllers\Module\TransactionBuilder;
 
 /**
  * Route Handler for Transaction.
@@ -57,8 +57,6 @@ class TransactionController extends Controller
 
     /**
      * Store transaction to database.
-     * 
-     * 
      */
     public function store(TransactionStore $request, $accountId = 0)
     {
