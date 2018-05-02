@@ -27,7 +27,7 @@
     <script src="{{ asset('/assets/js/require.min.js') }}"></script>
     <script>
         requirejs.config({
-            baseUrl: "."
+            baseUrl: "{{ asset('') }}"
         });    
     </script>
     

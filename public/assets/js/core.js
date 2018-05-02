@@ -12,12 +12,12 @@ var hexToRgba = function(hex, opacity) {
 $(document).ready(function () {
 
     // Initialize tooltips
-    $('[data-toggle="tooltip"]').tooltip();
+    // $('[data-toggle="tooltip"]').tooltip();
 
     // Initialize popovers
-	$('[data-toggle="popover"]').popover({
-		html: true
-    });
+	// $('[data-toggle="popover"]').popover({
+	// 	html: true
+    // });
 
     // Function for remove card
     $('[data-toggle="card-remove"]').on('click', function (e) {
