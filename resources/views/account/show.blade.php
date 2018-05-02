@@ -82,7 +82,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    {{ $transactions->links() }}
+                    {{ $transactions->links('vendor.pagination.bootstrap-4') }}
                 </div>
             </div>
         </div>
