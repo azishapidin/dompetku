@@ -116,6 +116,25 @@ class AccountController extends Controller
     }
 
     /**
+     * Show account detail and account transactions.
+     *
+     * @param \App\Model\Account $account Account Model
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show(Account $account)
+    {
+        if ($account->user_id != $this->request->user()->id) {
+            abort(403);
+        }
+
+        return view('account.show', [
+            'account' => $account,
+            'transactions' => $account->transaction()->orderBy('id', 'desc')->paginate(10),
+        ]);
+    }
+
+    /**
      * Store Account to Database.
      *
      * @param \App\Http\Requests\AccountStore $request Request from User after Validation
