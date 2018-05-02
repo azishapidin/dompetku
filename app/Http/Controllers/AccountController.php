@@ -129,7 +129,7 @@ class AccountController extends Controller
         }
 
         return view('account.show', [
-            'account' => $account,
+            'account'      => $account,
             'transactions' => $account->transaction()->orderBy('id', 'desc')->paginate(10),
         ]);
     }

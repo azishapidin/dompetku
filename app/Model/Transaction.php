@@ -2,7 +2,6 @@
 
 namespace App\Model;
 
-use App\Model\Account;
 use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
@@ -43,6 +42,7 @@ class Transaction extends Model
         if (strlen($description) <= $length) {
             return $description;
         }
-        return substr($description, 0, $length) . '...';
+
+        return substr($description, 0, $length).'...';
     }
 }
