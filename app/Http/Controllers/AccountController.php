@@ -130,12 +130,12 @@ class AccountController extends Controller
         $transactions = $account->transaction();
         $searchQuery = $this->request->get('query');
         if (!is_null($searchQuery)) {
-            $transactions = $transactions->where('description', 'LIKE', '%' . $searchQuery . '%');
+            $transactions = $transactions->where('description', 'LIKE', '%'.$searchQuery.'%');
         }
         $transactions = $transactions->orderBy('id', 'desc');
 
         return view('account.show', [
-            'account' => $account,
+            'account'      => $account,
             'transactions' => $transactions->paginate(10),
         ]);
     }
