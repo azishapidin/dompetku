@@ -23,13 +23,15 @@
                     <a href="{{ route('transaction.create', $account->id) }}"><button class="btn btn-success"> <span class="fa fa-plus"></span> {{ __("Create Transaction") }}</button></a>
                 </div>
                 <div class="col-md-6 pull-right">
-                    <div class="input-icon ml-2">
-                        <span class="input-icon-addon">
-                            <i class="fe fe-search"></i>
-                        </span>
-                        <input class="form-control w-10" placeholder="{{ __('Search Transaction') }}" type="text">
-                    </div>
-                </div>
+                    <form action="" method="get">
+                        <div class="input-icon ml-2">
+                            <span class="input-icon-addon">
+                                <i class="fe fe-search"></i>
+                            </span>
+                                <input class="form-control w-10" name="query" placeholder="{{ __('Search by Description') }}" type="text">
+                            </div>
+                        </div>
+                    </form>
             </div>
             <div class="card">
 

@@ -127,10 +127,16 @@ class AccountController extends Controller
         if ($account->user_id != $this->request->user()->id) {
             abort(403);
         }
+        $transactions = $account->transaction();
+        $searchQuery = $this->request->get('query');
+        if (!is_null($searchQuery)) {
+            $transactions = $transactions->where('description', 'LIKE', '%' . $searchQuery . '%');
+        }
+        $transactions = $transactions->orderBy('id', 'desc');
 
         return view('account.show', [
             'account' => $account,
-            'transactions' => $account->transaction()->orderBy('id', 'desc')->paginate(10),
+            'transactions' => $transactions->paginate(10),
         ]);
     }
 
