@@ -28,7 +28,7 @@
                             <span class="input-icon-addon">
                                 <i class="fe fe-search"></i>
                             </span>
-                                <input class="form-control w-10" name="query" placeholder="{{ __('Search by Description') }}" type="text">
+                                <input class="form-control w-10" name="query" placeholder="{{ __('Search by Description') }}" type="text" value="{{ Request::get('query') }}">
                             </div>
                         </div>
                     </form>
