@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\RouteHandler;
 
-use Config;
 use App\Http\Controllers\Controller;
+use Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 

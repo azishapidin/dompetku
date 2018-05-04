@@ -29,7 +29,7 @@ class User extends Authenticatable
 
     /**
      * Get all Account.
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function accounts()
@@ -39,7 +39,7 @@ class User extends Authenticatable
 
     /**
      * Get deleted Account.
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function deletedAccounts()

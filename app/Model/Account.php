@@ -26,7 +26,7 @@ class Account extends Model
 
     /**
      * Has many to Transaction.
-     * 
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function transaction()
@@ -36,7 +36,7 @@ class Account extends Model
 
     /**
      * Get last transaction from account's transaction.
-     * 
+     *
      * @return \App\Model\Transaction
      */
     public function getLastTransaction()
@@ -59,26 +59,26 @@ class Account extends Model
     }
 
     /**
-     * Override delete method
-     * 
+     * Override delete method.
+     *
      * @return void
      */
     public function delete()
     {
-        DB::transaction(function(){
+        DB::transaction(function () {
             $this->transaction()->delete();
             parent::delete();
         });
     }
 
     /**
-     * Override restore method
-     * 
+     * Override restore method.
+     *
      * @return void
      */
     public function restore()
     {
-        DB::transaction(function(){
+        DB::transaction(function () {
             $this->transaction()->restore();
             parent::restore();
         });

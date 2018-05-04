@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\RouteHandler;
 
-use App\Http\Requests\AccountStore;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AccountStore;
 use App\Model\Account;
 use Illuminate\Http\Request;
 
