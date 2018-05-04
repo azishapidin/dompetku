@@ -47,11 +47,11 @@
                     <div class="col">
                         <ul class="nav nav-tabs">
                             <li class="nav-item">
-                                <a href="./index.html" class="nav-link active">
+                                <a href="{{ route('home') }}" class="nav-link active">
                                 <i class="fe fe-activity"></i> {{ __('Summary') }} </a>
                             </li>
                             <li class="nav-item">
-                                <a href="./docs/index.html" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="fe fe-database"></i> {{ __('All Transaction') }} </a>
                             </li>
                             <li class="nav-item">
