@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -51,5 +52,31 @@ class Account extends Model
         $position = $this->currency_placement;
 
         return currencyFormat($balance, $currency, $position);
+    }
+
+    /**
+     * Override delete method
+     * 
+     * @return void
+     */
+    public function delete()
+    {
+        DB::transaction(function(){
+            $this->transaction()->delete();
+            parent::delete();
+        });
+    }
+
+    /**
+     * Override restore method
+     * 
+     * @return void
+     */
+    public function restore()
+    {
+        DB::transaction(function(){
+            $this->transaction()->restore();
+            parent::restore();
+        });
     }
 }
