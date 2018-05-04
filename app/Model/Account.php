@@ -26,6 +26,8 @@ class Account extends Model
 
     /**
      * Has many to Transaction.
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function transaction()
     {
@@ -34,6 +36,8 @@ class Account extends Model
 
     /**
      * Get last transaction from account's transaction.
+     * 
+     * @return \App\Model\Transaction
      */
     public function getLastTransaction()
     {
