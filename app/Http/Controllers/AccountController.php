@@ -153,6 +153,14 @@ class AccountController extends Controller
             abort(403);
         }
         $posted = $request->except(['_token', '_method']);
+        if (!is_null($request->file('image'))) {
+            $fileName = $request->user()->id.'+'.md5(time());
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $path = $request->file('image')->storeAs(
+                config('account.image_path'), $fileName.'.'.$extension, 'public'
+            );
+            $posted['image'] = $path;
+        }
         $update = $account->update($posted);
 
         return redirect()->route('account.edit', $account->id);
