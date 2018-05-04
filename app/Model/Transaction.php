@@ -19,8 +19,8 @@ class Transaction extends Model
     ];
 
     /**
-     * Relation to Account Model
-     * 
+     * Relation to Account Model.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function account()
@@ -30,7 +30,7 @@ class Transaction extends Model
 
     /**
      * Get balance with formatted currency.
-     * 
+     *
      * @return string Formatted balance
      */
     public function getFormattedBalanceAttribute()
@@ -42,7 +42,7 @@ class Transaction extends Model
 
     /**
      * Get amount with formatted currency.
-     * 
+     *
      * @return string Formatted amount
      */
     public function getFormattedAmountAttribute()
@@ -54,7 +54,7 @@ class Transaction extends Model
 
     /**
      * Get description excerpt.
-     * 
+     *
      * @return string Description excerpt
      */
     public function getExcerptAttribute()
