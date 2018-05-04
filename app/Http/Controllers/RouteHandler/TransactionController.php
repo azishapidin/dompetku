@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\RouteHandler;
 
 use App\Http\Controllers\Module\TransactionBuilder;
 use App\Http\Requests\TransactionStore;
+use App\Http\Controllers\Controller;
 use App\Model\Account;
 use Illuminate\Http\Request;
 
