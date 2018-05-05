@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\RouteHandler;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -40,10 +40,10 @@ class HomeController extends Controller
         //         $data['balance_by_currency'][$currency] = $this->request->user()->accounts()->where('currency', $currency)->sum('balance');
         //      });
 
-        $data['account_count']      = $this->request->user()->accounts()->count();
-        $data['transaction_count']  = $this->request->user()->transactions()->count();
-        $data['credit_count']       = $this->request->user()->transactions()->where('type', 'cr')->count();
-        $data['debit_count']        = $this->request->user()->transactions()->where('type', 'db')->count();
+        $data['account_count'] = $this->request->user()->accounts()->count();
+        $data['transaction_count'] = $this->request->user()->transactions()->count();
+        $data['credit_count'] = $this->request->user()->transactions()->where('type', 'cr')->count();
+        $data['debit_count'] = $this->request->user()->transactions()->where('type', 'db')->count();
 
         return view('home', $data);
     }
