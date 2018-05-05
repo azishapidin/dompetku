@@ -19,11 +19,11 @@
                         </span>
                         <div>
                             <h4 class="m-0">
-                                <a href="javascript:void(0)">132
+                                <a href="javascript:void(0)"><span class="counter">{{ $account_count }}</span>
                                     <small>{{ __('Accounts') }}</small>
                                 </a>
                             </h4>
-                            <small class="text-muted">12 waiting payments</small>
+                            <small class="text-muted">{{ __("Number of accounts") }}</small>
                         </div>
                     </div>
                 </div>
@@ -36,11 +36,11 @@
                         </span>
                         <div>
                             <h4 class="m-0">
-                                <a href="javascript:void(0)">78
-                                    <small>{{ __('Data') }}</small>
+                                <a href="javascript:void(0)"><span class="counter">{{ $transaction_count }}</span>
+                                    <small>{{ __('Transaction') }}</small>
                                 </a>
                             </h4>
-                            <small class="text-muted">32 shipped</small>
+                            <small class="text-muted">{{ __("Number of transactions") }}</small>
                         </div>
                     </div>
                 </div>
@@ -53,11 +53,11 @@
                         </span>
                         <div>
                             <h4 class="m-0">
-                                <a href="javascript:void(0)">1,352
+                                <a href="javascript:void(0)"><span class="counter">{{ $debit_count }}</span>
                                     <small>{{ __('Debit Data') }}</small>
                                 </a>
                             </h4>
-                            <small class="text-muted">163 registered today</small>
+                            <small class="text-muted">{{ __("Number of debit transactions") }}</small>
                         </div>
                     </div>
                 </div>
@@ -65,16 +65,16 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="card p-3">
                     <div class="d-flex align-items-center">
-                        <span class="stamp stamp-md bg-yellow mr-3">
+                        <span class="stamp stamp-md bg-blue-light mr-3">
                             <i class="fe fe-download"></i>
                         </span>
                         <div>
                             <h4 class="m-0">
-                                <a href="javascript:void(0)">132
+                                <a href="javascript:void(0)"><span class="counter">{{ $credit_count }}</span>
                                     <small>{{ __('Credit Data') }}</small>
                                 </a>
                             </h4>
-                            <small class="text-muted">16 waiting</small>
+                            <small class="text-muted">{{ __("Number of credit transactions") }}</small>
                         </div>
                     </div>
                 </div>
@@ -441,4 +441,24 @@
 
     </div>
 </div>
+@endsection
+
+@section('after_script')
+<script
+	src="https://code.jquery.com/jquery-2.2.4.min.js"
+	integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+	crossorigin="anonymous"></script>
+<script>
+$('.counter').each(function() {
+  $(this).prop('Counter', 0).animate({
+    Counter: $(this).text()
+  }, {
+    duration: 1500,
+    easing: 'swing',
+    step: function(now) {
+      $(this).text(Math.ceil(now));
+    }
+  });
+});
+</script>
 @endsection

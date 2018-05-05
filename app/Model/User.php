@@ -38,6 +38,16 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all Transactions.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    /**
      * Get deleted Account.
      *
      * @return \Illuminate\Database\Eloquent\Collection
