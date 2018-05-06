@@ -117,13 +117,38 @@ class AccountController extends Controller
     }
 
     /**
-     * Show account detail and account transactions.
+     * Show account transactions.
      *
      * @param \App\Model\Account $account Account Model
      *
      * @return \Illuminate\View\View
      */
     public function show(Account $account)
+    {
+        if ($account->user_id != $this->request->user()->id) {
+            abort(403);
+        }
+        $transactions = $account->transaction();
+        $searchQuery = $this->request->get('query');
+        if (!is_null($searchQuery)) {
+            $transactions = $transactions->where('description', 'LIKE', '%'.$searchQuery.'%');
+        }
+        $transactions = $transactions->orderBy('id', 'desc');
+
+        return view('account.show', [
+            'account'      => $account,
+            'transactions' => $transactions->paginate(10),
+        ]);
+    }
+
+    /**
+     * Show account transactions.
+     *
+     * @param \App\Model\Account $account Account Model
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showTransaction(Account $account)
     {
         if ($account->user_id != $this->request->user()->id) {
             abort(403);
