@@ -72,7 +72,7 @@
                                             </a>   
                                         @endif
                                         @if (is_null($account->deleted_at))
-                                            <a class="dropdown-item" href="{{ route('account.show', $account->id) }}">{{ __('Show Transaction') }}</a>
+                                            <a class="dropdown-item" href="{{ route('account.transaction', $account->id) }}">{{ __('Show Transaction') }}</a>
                                             <a class="dropdown-item" href="{{ route('account.edit', $account->id) }}">{{ __('Edit Account') }}</a>
                                             <a class="dropdown-item delete">
                                                 {{ __('Move to Trash') }}
