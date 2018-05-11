@@ -212,6 +212,7 @@ return [
         'View'         => Illuminate\Support\Facades\View::class,
         'Gravatar'     => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
         'Debugbar'     => Barryvdh\Debugbar\Facade::class,
+        'Hashids'      => Vinkla\Hashids\Facades\Hashids::class,
 
     ],
 
