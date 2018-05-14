@@ -3,7 +3,6 @@
 namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Model\Transaction;
 
 class TransactionAttachment extends Model
 {
@@ -20,7 +19,7 @@ class TransactionAttachment extends Model
      * @var array
      */
     protected $fillable = [
-        'transaction_id', 'file_path'
+        'transaction_id', 'file_path',
     ];
 
     /**

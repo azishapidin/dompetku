@@ -40,12 +40,12 @@ return [
     'connections' => [
 
         'main' => [
-            'salt' => 'y44GiNZypH9oVj1gAurl4QfDiO9SU0i3knim1YNNkcBEO1QBgJqNDKAdtOgTiPEF',
+            'salt'   => 'y44GiNZypH9oVj1gAurl4QfDiO9SU0i3knim1YNNkcBEO1QBgJqNDKAdtOgTiPEF',
             'length' => '10',
         ],
 
         'alternative' => [
-            'salt' => 'UBCENeMNuAbXcbczydbCytCLmPDDvApGeMwsjhgeqMgZTvIDWlfzVXjldnhqlPSH',
+            'salt'   => 'UBCENeMNuAbXcbczydbCytCLmPDDvApGeMwsjhgeqMgZTvIDWlfzVXjldnhqlPSH',
             'length' => '10',
         ],
 
