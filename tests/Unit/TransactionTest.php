@@ -5,8 +5,8 @@ namespace Tests\Unit;
 use App\Http\Controllers\Module\TransactionBuilder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
-use Tests\TestCase;
 use Storage;
+use Tests\TestCase;
 
 class TransactionTest extends TestCase
 {
