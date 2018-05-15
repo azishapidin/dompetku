@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Module;
 
 use App\Http\Controllers\Controller;
-use App\Model\TransactionAttachment;
-use App\Model\Transaction;
 use App\Model\Account;
-use Storage;
+use App\Model\Transaction;
+use App\Model\TransactionAttachment;
 
 /**
  * Transaction Builder.
@@ -138,9 +137,9 @@ class TransactionBuilder extends Controller
 
     /**
      * Attach file to transaction.
-     * 
+     *
      * @param array $uploaded Array of \Illuminate\Http\UploadedFile
-     * 
+     *
      * @return void
      */
     public function attachFile($uploaded = [])
@@ -155,7 +154,7 @@ class TransactionBuilder extends Controller
      */
     public function save()
     {
-        \DB::transaction(function(){
+        \DB::transaction(function () {
             $transaction = $this->last = Transaction::create($this->payload);
             if (count($this->attachment) > 0) {
                 foreach ($this->attachment as $file) {
@@ -165,7 +164,7 @@ class TransactionBuilder extends Controller
                     );
                     $attachment = new TransactionAttachment();
                     $attachment->file_path = $path;
-                    
+
                     // Save as attachment of transaction.
                     $transaction->attachment()->save($attachment);
                 }
