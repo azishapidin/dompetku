@@ -29,6 +29,16 @@ class Transaction extends Model
     }
 
     /**
+     * Has many to Transaction Attachment.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function attachment()
+    {
+        return $this->hasMany(\App\Model\TransactionAttachment::class);
+    }
+
+    /**
      * Get balance with formatted currency.
      *
      * @return string Formatted balance

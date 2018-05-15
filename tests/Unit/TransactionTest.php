@@ -4,7 +4,9 @@ namespace Tests\Unit;
 
 use App\Http\Controllers\Module\TransactionBuilder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
+use Storage;
 
 class TransactionTest extends TestCase
 {
@@ -143,5 +145,29 @@ class TransactionTest extends TestCase
 
         $this->assertEquals($this->builder->getBalance(), $this->payload['amount'] - $this->payload2['amount']);
         $this->assertDatabaseHas('transactions', $this->payload2);
+    }
+
+    /** @test */
+    public function testAddTransactionWithAttachment()
+    {
+        Storage::fake('public');
+        $this->initialize();
+
+        $this->builder->addCredit($this->payload['amount']);
+        $this->builder->setDescription($this->payload['description']);
+        $this->builder->setDate($this->payload['date']);
+        $this->builder->attachFile([
+            UploadedFile::fake()->image(str_random('10').'.jpg'),
+            UploadedFile::fake()->image(str_random('10').'.jpg'),
+        ]);
+        $this->builder->save();
+
+        $attachment = $this->builder->getLast()->attachment;
+        foreach ($attachment as $file) {
+            Storage::disk('public')->assertExists($file->file_path);
+        }
+        $this->assertFalse(is_null($this->builder->getLast()));
+        $this->assertEquals($this->builder->getBalance(), $this->payload['amount']);
+        $this->assertDatabaseHas('transactions', $this->payload);
     }
 }
