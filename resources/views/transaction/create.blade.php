@@ -49,7 +49,7 @@
                         </div>
                         
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Date') }}</label>
                                     <input class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" placeholder="{{ __('Transaction Date') }}.." type="text"
@@ -57,11 +57,20 @@
                                     <small class="invalid-feedback">{{ $errors->first('date') }}</small>
                                     @endif
                                 </div>
+                                <div class="form-group">
+                                    <div class="form-label">{{ __('Transaction Attachment') }}</div>
+                                    @for ($input = 1; $input <= config('transaction.max_attachment'); $input++)
+                                        <div class="custom-file" style="margin-bottom: 10px;">
+                                            <input class="custom-file-input" name="attachment" type="file">
+                                            <label class="custom-file-label">{{ __('Choose file') }}</label>
+                                        </div>
+                                    @endfor
+                                </div>
                             </div>
-                            <div class="col-md-8">
+                            <div class="col-md-7">
                                 <div class="form-group">
                                     <label class="form-label">{{ __('Memo') }}</label>
-                                    <textarea name="description" class="form-control" placeholder="{{ __('Insert transaction memo') }}..">{{ old('description') }}</textarea>
+                                    <textarea name="description" class="form-control" placeholder="{{ __('Insert transaction memo') }}.." rows="5">{{ old('description') }}</textarea>
                                     @if ($errors->has('description'))
                                     <small class="text-danger">{{ $errors->first('description') }}</small>
                                     @endif

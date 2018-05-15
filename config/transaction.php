@@ -9,6 +9,15 @@ return [
     |
     */
 
-    'attachment_path' => 'transaction-attachment',
+    'attachment_path'   => 'transaction-attachment',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Transaction Attachment Maximum count
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'max_attachment'    => 3,
 
 ];
