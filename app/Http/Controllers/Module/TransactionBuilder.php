@@ -134,10 +134,12 @@ class TransactionBuilder extends Controller
      */
     public function save()
     {
-        $this->last = Transaction::create($this->payload);
-        $this->account->balance = $this->last->balance;
-        $this->account->save();
-        $this->initializeData();
+        \DB::transaction(function(){
+            $this->last = Transaction::create($this->payload);
+            $this->account->balance = $this->last->balance;
+            $this->account->save();
+            $this->initializeData();
+        });
 
         return $this->last;
     }
