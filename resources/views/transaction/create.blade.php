@@ -61,10 +61,12 @@
                                     <div class="form-label">{{ __('Transaction Attachment') }}</div>
                                     @for ($input = 1; $input <= config('transaction.max_attachment'); $input++)
                                         <div class="custom-file" style="margin-bottom: 10px;">
-                                            <input class="custom-file-input" name="attachment" type="file">
-                                            <label class="custom-file-label">{{ __('Choose file') }}</label>
+                                            <input name="attachment[]" type="file">
                                         </div>
                                     @endfor
+                                    @if ($errors->has('attachment.*'))
+                                    <small class="text-danger">{{ $errors->first('attachment.*') }}</small>
+                                    @endif
                                 </div>
                             </div>
                             <div class="col-md-7">

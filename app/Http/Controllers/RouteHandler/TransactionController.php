@@ -78,6 +78,9 @@ class TransactionController extends Controller
         } elseif ($posted['type'] == 'db') {
             $builder->addDebit($posted['amount']);
         }
+        if (isset($posted['attachment']) && count($posted['attachment']) > 0) {
+            $builder->attachFile($posted['attachment']);
+        }
         $builder->setDescription($posted['description']);
         $builder->setDate($posted['date']);
         $builder->save();
