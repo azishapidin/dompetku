@@ -1,118 +1,212 @@
-@extends('layouts.master')
-@section('title') @yield('title') @endsection 
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-@section('body')
-<div class="page">
-    <div class="page-main">
-        <div class="header">
-            <div class="container">
-                <div class="d-flex">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('assets/images/logo.png') }}" class="navbar-brand-img" alt="{{ config('app.name') }}">
+	<title>@yield('title') - {{ config('app.name') }}</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+    @yield('before_script')
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="{{ url('') }}" class="simple-text">
+                    {{ config('app.name') }}
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="{{ \Route::current()->getName() == 'home' ? 'active' : '' }}">
+                    <a href="{{ route('home') }}">
+                        <i class="pe-7s-graph"></i>
+                        <p>{{ __('Summary') }}</p>
                     </a>
-                    <div class="ml-auto d-flex order-lg-2">
-                        <div class="nav-item">
-                            <a href="https://github.com/azishapidin/dompetku" target="_blank" class="btn btn-outline-primary btn-sm">Fork me on Github</a>
-                        </div>
-                        <div class="dropdown">
-                            <a href="#" class="nav-link pr-0" data-toggle="dropdown">
-                                <span class="avatar" style="background-image: url({{ Gravatar::src(Auth::user()->email) }})"></span>
-                                <span class="ml-2 d-none d-lg-block">
-                                    <span class="text-default">{{ Auth::user()->name }}</span>
-                                    <small class="text-muted d-block mt-1">Superman</small>
-                                </span>
+                </li>
+                <li class="{{ \Route::current()->getName() == 'account.index' ? 'active' : '' }}">
+                    <a href="{{ route('account.index') }}">
+                        <i class="pe-7s-wallet"></i>
+                        <p>{{ __('Account') }}</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">@yield('title')</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    {{-- <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+								<p class="hidden-lg hidden-md">Dashboard</p>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                <a class="dropdown-item" href="#">
-                                    {{ __('Account Setting') }}
-                                </a>
-                                <div class="dropdown-divider"></div>
+                        </li>
+                        <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-globe"></i>
+                                    <b class="caret hidden-lg hidden-md"></b>
+									<p class="hidden-lg hidden-md">
+										5 Notifications
+										<b class="caret"></b>
+									</p>
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                              </ul>
+                        </li>
+                        <li>
+                           <a href="">
+                                <i class="fa fa-search"></i>
+								<p class="hidden-lg hidden-md">Search</p>
+                            </a>
+                        </li>
+                    </ul> --}}
+
+                    <ul class="nav navbar-nav navbar-right">
+                        {{-- <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <p>
+										{{ __('Quick Link') }}
+										<b class="caret"></b>
+									</p>
+
+                              </a>
+                              <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li class="divider"></li>
+                                <li><a href="https://azishapidin.com/">Author</a></li>
+                              </ul>
+                        </li> --}}
+                        <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                                        document.getElementById('logout-form').submit();">
+                                    <p>{{ __('Logout') }}</p>
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
-                            </div>
-                        </div>
-                    </div>
+                        </li>
+						<li class="separator hidden-lg"></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div class="header-nav d-none d-lg-flex">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <ul class="nav nav-tabs">
-                            <li class="nav-item">
-                                <a href="{{ route('home') }}" class="nav-link active">
-                                <i class="fe fe-activity"></i> {{ __('Summary') }} </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fe fe-database"></i> {{ __('All Transaction') }} </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="javascript:void(0)" class="nav-link"><i class="fe fe-credit-card"></i> {{ __('Accounts') }}</a>
-                                <div class="nav-submenu nav">
-                                    <a href="{{ route('account.create') }}" class="nav-item">{{ __('Add Account') }} </a>
-                                    <a href="{{ route('account.index') }}" class="nav-item">{{ __('Show All Account') }} </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-3 ml-auto">
-                        <form class="input-icon">
-                            <input type="search" class="form-control header-search" placeholder="{{ __('Search') }}&hellip;" tabindex="1">
-                            <div class="input-icon-addon">
-                                <i class="fe fe-search"></i>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                {{-- @yield('content') --}}
             </div>
         </div>
-        <div class="page-content">
-            @yield('content') 
-        </div>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        @php $no = 0; @endphp
+                        @foreach (config('languages') as $lang => $language)
+                            @php
+                            $no++;
+                            @endphp
+                            @if ($lang != App::getLocale())
+                                <li>
+                                    <a href="{{ route('lang.switch', $lang) }}">{{ $language }}</a>
+                                </li>
+                            @else
+                                <li>
+                                    <a href="#" disabled><strong>{{ $language }}</strong></a>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                        {{ __('Copyright') }} © {{ date('Y') }}
+                        <a href="{{ url('') }}">{{ config('app.name') }}</a>. {{ __('System developed by') }} <a href="https://azishapidin.com/" target="_blank">Azis Hapidin</a> | Theme by <a href="http://www.creative-tim.com">Creative Tim</a>.
+                </p>
+            </div>
+        </footer>
+
     </div>
-    <footer class="footer">
-        <div class="container">
-            <div class="row align-items-center flex-row-reverse">
-                <div class="col-auto ml-auto">
-                    <div class="row align-items-center">
-                        <div class="col-auto">
-                            <ul class="list-inline list-inline-dots mb-0">
-                                @php $no = 0; @endphp
-                                @foreach (config('languages') as $lang => $language)
-                                    @php
-                                    $no++;
-                                    @endphp
-                                    @if ($lang != App::getLocale())
-                                        <li class="list-inline-item">
-                                                <a href="{{ route('lang.switch', $lang) }}">{{ $language }}</a>
-                                        </li>
-                                    @else
-                                        <li class="list-inline-item">
-                                            {{ $language }}
-                                        </li>
-                                    @endif
-                                @endforeach
-                            </ul>
-                        </div>
-                        <div class="col-auto">
-                            <a href="https://github.com/azishapidin/dompetku" target="_blank" class="btn btn-outline-primary btn-sm">Fork me on Github</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-auto mt-3 mt-lg-0 text-center">
-                    {{ __('Copyright') }} © {{ date('Y') }}
-                    <a href="{{ url('') }}">{{ config('app.name') }}</a>. {{ __('System developed by') }} <a href="https://azishapidin.com/" target="_blank">Azis Hapidin</a> | Theme by <a href="https://codecalm.net" target="_blank">codecalm.net</a> All rights reserved.
-                </div>
-            </div>
-        </div>
-    </footer>
 </div>
-@endsection
+
+
+</body>
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--  Charts Plugin -->
+	<script src="assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="assets/js/bootstrap-notify.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+    <script src="assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
+    
+    @yield('after_script')
+
+</html>
