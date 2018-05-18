@@ -9,6 +9,7 @@
     </span>
 
     @include('part.error')
+    <br>
 
     <div class="wrap-input100 validate-input" data-validate="{{ __('validation.email', ['attribute' => '']) }}">
         <input class="input100" type="text" name="email">
