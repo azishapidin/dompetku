@@ -1,59 +1,58 @@
 @extends('layouts.auth')
-@section('title', __('Register')) 
+@section('title', __('Register') . ' ~ ' . config('app.name'))
 
 @section('content')
-<form class="card" method="POST" action="{{ route('register') }}">
+<form class="login100-form validate-form" method="POST" action="{{ route('register') }}">
     @csrf
-    <div class="card-body p-6">
-        <div class="card-title">{{ __('Register') }}</div>
-        <div class="form-group">
-                <label class="form-label">{{ __('Name') }}</label>
-                <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="{{ __('Name') }}" value="{{ old('name') }}">
-                @if ($errors->has('name'))
-                    <small class="text-danger">{{ $errors->first('name') }}</small>
-                @endif
-            </div>
-        <div class="form-group">
-            <label class="form-label">{{ __('E-Mail Address') }}</label>
-            <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}">
-            @if ($errors->has('email'))
-                <small class="text-danger">{{ $errors->first('email') }}</small>
-            @endif
-        </div>
-        <div class="form-group">
-            <label class="form-label">
-                {{ __('Password') }}
-            </label>
-            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Password') }}" value="{{ old('password') }}">
-            @if ($errors->has('password'))
-                <small class="text-danger">{{ $errors->first('password') }}</small>
-            @endif
-        </div>
-        <div class="form-group">
-                <label class="form-label">
-                    {{ __('Password Confirmation') }}
-                </label>
-                <input type="password" class="form-control{{ $errors->has('password_confirmation') ? ' is-invalid' : '' }}" name="password_confirmation" placeholder="{{ __('Password Confirmation') }}" value="{{ old('password_confirmation') }}">
-                @if ($errors->has('password_confirmation'))
-                    <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
-                @endif
-            </div>
-        {{-- <div class="form-group">
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" />
-                <span class="custom-control-label">Agree the
-                    <a href="terms.html">terms and policy</a>
-                </span>
-            </label>
-        </div> --}}
-        <div class="form-footer">
-            <button type="submit" class="btn btn-primary btn-block">{{ __('Register') }}</button>
+    <span class="login100-form-title p-b-48">
+        {{ __('Register') }}
+    </span>
+
+    @include('part.error')
+
+    <div class="wrap-input100 validate-input" data-validate="{{ __('validation.required', ['attribute' => '']) }}">
+        <input class="input100" type="text" name="name">
+        <span class="focus-input100" data-placeholder="{{ __('Name') }}"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input" data-validate="{{ __('validation.email', ['attribute' => '']) }}">
+        <input class="input100" type="text" name="email">
+        <span class="focus-input100" data-placeholder="{{ __('E-Mail Address') }}"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input" data-validate="{{ __('validation.required', ['attribute' => '']) }}">
+        <span class="btn-show-pass">
+            <i class="zmdi zmdi-eye"></i>
+        </span>
+        <input class="input100" type="password" name="password">
+        <span class="focus-input100" data-placeholder="{{ __('Password') }}"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input" data-validate="{{ __('validation.required', ['attribute' => '']) }}">
+        <span class="btn-show-pass">
+            <i class="zmdi zmdi-eye"></i>
+        </span>
+        <input class="input100" type="password" name="password_confirmation">
+        <span class="focus-input100" data-placeholder="{{ __('Password Confirmation') }}"></span>
+    </div>
+
+    <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button class="login100-form-btn">
+                {{ __('Register') }}
+            </button>
         </div>
     </div>
 </form>
 
-<div class="text-center text-muted">
-    {{ __('Already have account?') }}
-    <a href="{{ route('login') }}">{{ __('Login') }}</a>
+<br>
+<br>
+<div class="text-center">
+    <span class="txt1">
+        {{ __('Already have account?') }}
+        <a href="{{ route('login') }}" class="txt2">{{ __('Login') }}</a>
+    </span>
+    <br>
 </div>
 @endsection

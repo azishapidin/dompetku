@@ -1,42 +1,48 @@
 @extends('layouts.auth')
-@section('title', __('Login'))
+@section('title', __('Login') . ' ~ ' . config('app.name'))
 
 @section('content')
-<form class="card" method="POST" action="{{ route('login') }}">
+<form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
     @csrf
-    <div class="card-body p-6">
-        <div class="card-title">{{ __('Login') }}</div>
-        <div class="form-group">
-            <label class="form-label">{{ __('E-Mail Address') }}</label>
-            <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" placeholder="{{ __('E-Mail Address') }}" value="{{ old('email') }}">
-            @if ($errors->has('email'))
-                <small class="text-danger">{{ $errors->first('email') }}</small>
-            @endif
-        </div>
-        <div class="form-group">
-            <label class="form-label">
-                {{ __('Password') }}
-                <a href="{{ route('password.request') }}" class="pull-right small">{{ __('Forgot Your Password?') }}</a>
-            </label>
-            <input type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="{{ __('Password') }}" value="{{ old('password') }}">
-            @if ($errors->has('password'))
-                <small class="text-danger">{{ $errors->first('password') }}</small>
-            @endif
-        </div>
-        <div class="form-group">
-            <label class="custom-control custom-checkbox">
-                <input type="checkbox" name="remember" {{ old( 'remember') ? 'checked' : '' }} class="custom-control-input" />
-                <span class="custom-control-label">{{ __('Remember Me') }}</span>
-            </label>
-        </div>
-        <div class="form-footer">
-            <button type="submit" class="btn btn-primary btn-block">{{ __('Login') }}</button>
+    <span class="login100-form-title p-b-48">
+        {{ __('Login') }}
+    </span>
+
+    @include('part.error')
+
+    <div class="wrap-input100 validate-input" data-validate="{{ __('validation.email', ['attribute' => '']) }}">
+        <input class="input100" type="text" name="email">
+        <span class="focus-input100" data-placeholder="{{ __('E-Mail Address') }}"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input" data-validate="{{ __('validation.required', ['attribute' => '']) }}">
+        <span class="btn-show-pass">
+            <i class="zmdi zmdi-eye"></i>
+        </span>
+        <input class="input100" type="password" name="password">
+        <span class="focus-input100" data-placeholder="{{ __('Password') }}"></span>
+    </div>
+    <a href="{{ route('password.request') }}" class="pull-right small">{{ __('Forgot Your Password?') }}</a>
+
+    <br>
+    <br>
+    <div class="container-login100-form-btn">
+        <div class="wrap-login100-form-btn">
+            <div class="login100-form-bgbtn"></div>
+            <button class="login100-form-btn">
+                {{ __('Login') }}
+            </button>
         </div>
     </div>
 </form>
 
-<div class="text-center text-muted">
-    {{ __("Don't have account yet?") }}
-    <a href="{{ route('register') }}">{{ __("Sign Up") }}</a>
+<br>
+<br>
+<div class="text-center">
+    <span class="txt1">
+        {{ __("Don't have account yet?") }}
+        <a href="{{ route('register') }}" class="txt2">{{ __("Sign Up") }}</a>
+    </span>
+    <br>
 </div>
 @endsection
