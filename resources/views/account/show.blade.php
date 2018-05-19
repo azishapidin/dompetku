@@ -7,9 +7,6 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-4">
-        @include('part.profile')
-    </div>
     <div class="col-md-8">
         <div class="row" style="margin-bottom: 10px;">
             <div class="col-md-6">
@@ -81,6 +78,9 @@
                 {{ $transactions->links('vendor.pagination.bootstrap-4') }}
             </div>
         </div>
+    </div>
+    <div class="col-md-4">
+        @include('part.profile')
     </div>
 </div>
 
