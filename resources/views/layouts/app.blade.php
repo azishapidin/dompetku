@@ -54,7 +54,7 @@
                         <p>{{ __('Summary') }}</p>
                     </a>
                 </li>
-                <li class="{{ \Route::current()->getName() == 'account.index' ? 'active' : '' }}">
+                <li class="{{ request()->is('account/*') ? 'active' : '' }}">
                     <a href="{{ route('account.index') }}">
                         <i class="pe-7s-wallet"></i>
                         <p>{{ __('Account') }}</p>
