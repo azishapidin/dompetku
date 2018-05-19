@@ -2,92 +2,83 @@
 @section('title', __('Create Account'))
 
 @section('content')
-<div class="container">
-    <div class="page-header">
-        <h1 class="page-title">
-            {{ __('Create Account') }}
-        </h1>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            @include('part.profile')
-        </div>
-        <div class="col-md-8">
-            <div class="card">
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">{{ __("Account Information") }}</h4>
+            </div>
+            <div class="content">
                 <form action="{{ route('account.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="card-header">
-                        <h3 class="card-title">{{ __("Account Information") }}</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label class="form-label">{{ __('Account Name') }}</label>
-                            <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" placeholder="{{ __('Account Name') }}.." type="text"
-                                value="{{ old('name') }}"> @if ($errors->has('name'))
-                            <small class="invalid-feedback">{{ $errors->first('name') }}</small>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">{{ __('Account Image/Icon') }}</label>
-                            <input name="image" type="file">
-                            <br> @if ($errors->has('image'))
-                            <small class="invalid-feedback">{{ $errors->first('image') }}</small>
-                            @else
-                            <small class="text-info">{{ __('By default, account image is a wallet icon, max file size is 500kb.') }}</small>
-                            @endif
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">{{ __('Currency') }}</label>
-                            <select name="currency" class="form-control{{ $errors->has('currency') ? ' is-invalid' : '' }}">
-                                @foreach ($currencies as $code => $currency)
-                                <option value="{{ $code }}" data-symbol="{{ $currency['symbol'] }}" @if($code==old( 'currency')) selected @endif>{{ $currency['name'] }} ({{ $currency['symbol'] }})</option>
-                                @endforeach
-                            </select>
-                            @if ($errors->has('currency'))
-                            <small class="invalid-feedback">{{ $errors->first('currency') }}</small>
-                            @endif
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">{{ __('Currency symbol placement') }}</label>
-                            <select name="currency_placement" class="form-control{{ $errors->has('currency_placement') ? ' is-invalid' : '' }}">
-                                <option value="before" @if( 'before'==old( 'currency_placement')) selected @endif>{{ __('Before the Number') }}</option>
-                                <option value="after" @if( 'after'==old( 'currency_placement')) selected @endif>{{ __('After the Number') }}</option>
-                            </select>
-                            @if ($errors->has('currency_placement'))
-                            <small class="invalid-feedback">{{ $errors->first('currency_placement') }}</small>
-                            @endif
-                        </div>
-
-                        <div class="form-group" style="max-width: 300px;">
-                            <label class="form-label">{{ __('Current Balance') }}</label>
-                            <div class="input-group">
-                                <span class="input-group-prepend currency-prepend" style="display:none">
-                                    <span class="input-group-text currency">$</span>
-                                </span>
-                                <input class="form-control text-right{{ $errors->has('balance') ? ' is-invalid' : '' }}" aria-label="Insert current balance"
-                                    placeholder="{{ __('Insert current Account balance') }}.." type="text" name="balance" value="{{ old('balance') }}">
-                                <span class="input-group-append currency-append" style="display:none">
-                                    <span class="input-group-text currency">$</span>
-                                </span>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">{{ __('Account Name') }}</label>
+                                <input class="form-control{{ $errors->has('name') ? ' has-error' : '' }}" name="name" placeholder="{{ __('Account Name') }}.." type="text"
+                                    value="{{ old('name') }}"> @if ($errors->has('name'))
+                                <small class="text-danger">{{ $errors->first('name') }}</small>
+                                @endif
                             </div>
-                            @if ($errors->has('balance'))
-                            <small class="invalid-feedback" style="display:block">{{ $errors->first('balance') }}</small>
-                            @endif
                         </div>
-
-
-                    </div>
-                    <div class="card-footer text-right">
-                        <div class="d-flex">
-                            <button href="javascript:void(0)" type="reset" class="btn btn-link">{{ __('Cancel') }}</button>
-                            <button type="submit" class="btn btn-primary ml-auto">{{ __('Save Account') }}</button>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">{{ __('Account Image/Icon') }}</label>
+                                <input name="image" type="file">
+                                <br> @if ($errors->has('image'))
+                                <small class="text-danger">{{ $errors->first('image') }}</small>
+                                @else
+                                <small class="text-info">{{ __('By default, account image is a wallet icon, max file size is 500kb.') }}</small>
+                                @endif
+                            </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="form-label">{{ __('Currency') }}</label>
+                        <select name="currency" class="form-control{{ $errors->has('currency') ? ' has-error' : '' }}">
+                            @foreach ($currencies as $code => $currency)
+                            <option value="{{ $code }}" data-symbol="{{ $currency['symbol'] }}" @if($code==old( 'currency')) selected @endif>{{ $currency['name'] }} ({{ $currency['symbol'] }})</option>
+                            @endforeach
+                        </select>
+                        @if ($errors->has('currency'))
+                        <small class="text-danger">{{ $errors->first('currency') }}</small>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">{{ __('Currency symbol placement') }}</label>
+                        <select name="currency_placement" class="form-control{{ $errors->has('currency_placement') ? ' has-error' : '' }}">
+                            <option value="before" @if( 'before'==old( 'currency_placement')) selected @endif>{{ __('Before the Number') }}</option>
+                            <option value="after" @if( 'after'==old( 'currency_placement')) selected @endif>{{ __('After the Number') }}</option>
+                        </select>
+                        @if ($errors->has('currency_placement'))
+                        <small class="text-danger">{{ $errors->first('currency_placement') }}</small>
+                        @endif
+                    </div>
+
+                    <div class="form-group" style="max-width: 300px;">
+                        <label class="form-label">{{ __('Current Balance') }}</label>
+                        <div class="input-group">
+                            <span class="input-group-addon currency currency-prepend" style="display:none">$</span>
+                            <input class="form-control text-right{{ $errors->has('balance') ? ' has-error' : '' }}" aria-label="Insert current balance"
+                            placeholder="{{ __('Insert current Account balance') }}.." type="text" name="balance" value="{{ old('balance') }}">
+                            <span class="input-group-addon currency currency-append">$</span>
+                        </div>
+                        @if ($errors->has('balance'))
+                        <small class="text-danger" style="display:block">{{ $errors->first('balance') }}</small>
+                        @endif
+                    </div>
+
+                    <button type="submit" class="btn btn-info btn-fill pull-right">{{ __('Save Account') }}</button>
+                    <div class="clearfix"></div>
                 </form>
             </div>
         </div>
+    </div>
+
+    <div class="col-md-4">
+        @include('part.profile')
     </div>
 
 </div>
