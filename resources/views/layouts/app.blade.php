@@ -54,7 +54,7 @@
                         <p>{{ __('Summary') }}</p>
                     </a>
                 </li>
-                <li class="{{ request()->is('account/*') ? 'active' : '' }}">
+                <li class="{{ request()->is('account/*') || request()->is('account') || request()->is('account/*/edit') ? 'active' : '' }}">
                     <a href="{{ route('account.index') }}">
                         <i class="pe-7s-wallet"></i>
                         <p>{{ __('Account') }}</p>
