@@ -130,21 +130,6 @@ class AccountController extends Controller
         if ($account->user_id != $this->request->user()->id) {
             abort(403);
         }
-        // show account summary
-    }
-
-    /**
-     * Show account transactions.
-     *
-     * @param \App\Model\Account $account Account Model
-     *
-     * @return \Illuminate\View\View
-     */
-    public function showTransaction(Account $account)
-    {
-        if ($account->user_id != $this->request->user()->id) {
-            abort(403);
-        }
         $transactions = $account->transaction();
         $searchQuery = $this->request->get('query');
         if (!is_null($searchQuery)) {
@@ -152,7 +137,7 @@ class AccountController extends Controller
         }
         $transactions = $transactions->orderBy('id', 'desc');
 
-        return view('account.showTransaction', [
+        return view('account.show', [
             'account'      => $account,
             'transactions' => $transactions->paginate(10),
         ]);

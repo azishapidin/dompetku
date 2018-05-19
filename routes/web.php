@@ -22,7 +22,6 @@ Route::get('/home', 'RouteHandler\HomeController@index')->name('home');
 
 // Account Controller
 Route::resource('/account', 'RouteHandler\AccountController');
-Route::get('/account/{account}/transaction', 'RouteHandler\AccountController@showTransaction')->name('account.transaction');
 Route::get('/account/{id}/restore', 'RouteHandler\AccountController@restore')->name('account.restore');
 Route::delete('/account/{id}/permanent', 'RouteHandler\AccountController@deletePermanent')->name('account.deletePermanent');
 

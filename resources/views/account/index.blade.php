@@ -31,11 +31,8 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="header">
-                <h4 class="title">{{ $tableTitle }}</h4>
-            </div>
-            <div class="content table-responsive table-full-width">
-                <table class="table table-hover table-striped">
+            <div class="table-responsive">
+                <table class="table card-table table-vcenter text-nowrap">
                     <thead>
                         <tr>
                             <th class="w-1">#</th>
@@ -78,7 +75,7 @@
                                 </a>
                                 @endif
                                 @if (is_null($account->deleted_at))
-                                <a class="btn btn-fill btn-primary btn-secondary btn-sm" href="{{ route('account.transaction', $account->id) }}">{{ __('Show Transaction') }}</a>
+                                <a class="btn btn-fill btn-primary btn-secondary btn-sm" href="{{ route('account.show', $account->id) }}">{{ __('Show Transaction') }}</a>
                                 <a class="btn btn-fill btn-info btn-secondary btn-sm" href="{{ route('account.edit', $account->id) }}">{{ __('Edit Account') }}</a>
                                 <a class="btn btn-fill btn-danger btn-secondary btn-sm delete">
                                     {{ __('Move to Trash') }}

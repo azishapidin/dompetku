@@ -1,40 +1,33 @@
 @extends('layouts.app')
-@section('title', __('Show Account'))
+@section('title', __('Show Account Transaction'))
 
 @section('before_script')
 
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="page-header">
-        <h1 class="page-title">
-            {{ __('Show Account') }}
-        </h1>
+<div class="row">
+    <div class="col-md-4">
+        @include('part.profile')
     </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            @include('part.profile')
-        </div>
-        <div class="col-md-8">
-            <div class="row" style="margin-bottom: 10px;">
-                <div class="col-md-6">
-                    <a href="{{ route('transaction.create', $account->id) }}"><button class="btn btn-success"> <span class="fa fa-plus"></span> {{ __("Create Transaction") }}</button></a>
-                </div>
-                <div class="col-md-6 pull-right">
-                    <form action="" method="get">
-                        <div class="input-icon ml-2">
-                            <span class="input-icon-addon">
-                                <i class="fe fe-search"></i>
-                            </span>
-                                <input class="form-control w-10" name="query" placeholder="{{ __('Search by Description') }}" type="text" value="{{ Request::get('query') }}">
-                            </div>
-                        </div>
-                    </form>
+    <div class="col-md-8">
+        <div class="row" style="margin-bottom: 10px;">
+            <div class="col-md-6">
+                <a href="{{ route('transaction.create', $account->id) }}" style="margin-top: 5px;"><button class="btn btn-success"> <span class="fa fa-plus"></span> {{ __("Create Transaction") }}</button></a>
             </div>
-            <div class="card">
-
+            <div class="col-md-6 pull-right">
+                <form action="" method="get" style="margin-top: 5px;">
+                    <div class="input-icon ml-2">
+                        <span class="input-icon-addon">
+                            <i class="fe fe-search"></i>
+                        </span>
+                            <input class="form-control w-10" name="query" placeholder="{{ __('Search by Description') }}" type="text" value="{{ Request::get('query') }}">
+                        </div>
+                    </div>
+                </form>
+        </div>
+        <div class="card">
+            <div class="table-responsive">
                 <table class="table card-table table-vcenter text-nowrap">
                     <thead>
                         <tr>
@@ -82,14 +75,13 @@
                     </tbody>
                 </table>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    {{ $transactions->links('vendor.pagination.bootstrap-4') }}
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ $transactions->links('vendor.pagination.bootstrap-4') }}
             </div>
         </div>
     </div>
-
 </div>
 
 {{-- <!-- Button to Open the Modal -->
