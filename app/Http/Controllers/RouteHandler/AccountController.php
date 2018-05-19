@@ -49,8 +49,10 @@ class AccountController extends Controller
         }
 
         if ($data['showDeleted']) {
+            $data['tableTitle'] = __('Show Trash');
             $data['accounts'] = $this->request->user()->deletedAccounts();
         } else {
+            $data['tableTitle'] = __('Show Active Account');
             $data['accounts'] = $this->request->user()->accounts;
         }
 
