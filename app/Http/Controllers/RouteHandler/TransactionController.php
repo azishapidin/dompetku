@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Module\TransactionBuilder;
 use App\Http\Requests\TransactionStore;
 use App\Model\Account;
+use App\Model\Transaction;
 use Illuminate\Http\Request;
 
 /**
@@ -86,5 +87,17 @@ class TransactionController extends Controller
         $builder->save();
 
         return redirect()->route('account.show', $account->id);
+    }
+
+    public function detail($transactionId = '')
+    {
+        $transaction = Transaction::findOrFail($transactionId);
+        if ($transaction->user_id != $this->request->user()->id) {
+            abort(403);
+        }
+
+        return view('transaction.detail', [
+            'transaction' => $transaction
+        ]);
     }
 }

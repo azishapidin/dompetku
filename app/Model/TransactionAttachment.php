@@ -31,4 +31,14 @@ class TransactionAttachment extends Model
     {
         return $this->belongsTo(Transaction::class);
     }
+
+    /**
+     * Get url for this file.
+     * 
+     * @return string
+     */
+    public function getUrlAttribute()
+    {
+        return asset('storage/' . $this->file_path);
+    }
 }
