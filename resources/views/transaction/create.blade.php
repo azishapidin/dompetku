@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('title', __('Add Transaction'))
 
+@section('before_script')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css">
+@endsection
+
 @section('content')
 <div class="row">
     <div class="col-md-8">
@@ -83,9 +87,12 @@
 
 @section('after_script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 <script>
-    $(document).ready(function () {
-        
-    });
+    // $(document).ready(function () {
+        $('input[name=date]').datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    // });
 </script>
 @endsection

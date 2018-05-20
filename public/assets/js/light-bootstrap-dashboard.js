@@ -32,7 +32,7 @@ $(document).ready(function(){
     lbd.initRightMenu();
 
     //  Activate the tooltips
-    $('[rel="tooltip"]').tooltip();
+    // $('[rel="tooltip"]').tooltip();
 
     $('.form-control').on("focus", function(){
         $(this).parent('.input-group').addClass("input-group-focus");
