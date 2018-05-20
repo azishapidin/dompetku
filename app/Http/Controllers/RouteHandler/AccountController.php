@@ -5,8 +5,8 @@ namespace App\Http\Controllers\RouteHandler;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AccountStore;
 use App\Model\Account;
-use Storage;
 use Illuminate\Http\Request;
+use Storage;
 
 /**
  * Route Handler for Account.
