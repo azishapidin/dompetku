@@ -5,6 +5,7 @@ namespace App\Http\Controllers\RouteHandler;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AccountStore;
 use App\Model\Account;
+use Storage;
 use Illuminate\Http\Request;
 
 /**
@@ -163,6 +164,9 @@ class AccountController extends Controller
                 config('account.image_path'), $fileName.'.'.$extension, 'public'
             );
             $posted['image'] = $path;
+            if (!is_null($account->image)) {
+                Storage::disk('public')->delete($account->image);
+            }
         }
         $update = $account->update($posted);
 
