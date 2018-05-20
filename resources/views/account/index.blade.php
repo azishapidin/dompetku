@@ -36,6 +36,7 @@
                     <thead>
                         <tr>
                             <th class="w-1">#</th>
+                            <th></th>
                             <th>{{ __('Account Name') }}</th>
                             <th>{{ __('Currency') }}</th>
                             <th>{{ __('Balance') }}</th>
@@ -45,12 +46,19 @@
                     <tbody>
                         @if($accounts->isEmpty())
                         <tr>
-                            <td colspan="5" class="text-center">{{ __('No data found') }}</td>
+                            <td colspan="6" class="text-center">{{ __('No data found') }}</td>
                         </tr>
                         @endif @foreach($accounts as $key => $account)
                         <tr>
                             <td>
                                 <span class="text-muted">{{ $key + 1 }}</span>
+                            </td>
+                            <td>
+                                @if(!is_null($account->image))
+                                <img src="{{ asset('storage/' . $account->image) }}" style="max-width: 100px;" alt="Logo">
+                                @else
+                                <i class="pe-7s-wallet"></i>
+                                @endif
                             </td>
                             <td>
                                 <a href="{{ route('account.show', $account->id) }}">{{ $account->name }}
