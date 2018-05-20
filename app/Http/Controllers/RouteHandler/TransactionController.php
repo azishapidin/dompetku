@@ -97,7 +97,7 @@ class TransactionController extends Controller
         }
 
         return view('transaction.detail', [
-            'transaction' => $transaction
+            'transaction' => $transaction,
         ]);
     }
 }
