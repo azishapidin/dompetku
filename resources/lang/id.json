@@ -1,5 +1,6 @@
 {
     "Login": "Masuk",
+    "Logout": "Logout",
     "Register": "Daftar",
     "Sign Up": "Daftar",
     "Name": "Nama Lengkap",
@@ -18,6 +19,7 @@
     "Reset Password": "Update Password",
 
     "Account": "Akun",
+    "Accounts": "Akun",
     "Account Name": "Nama Akun",
     "Currency": "Mata Uang",
     "Balance": "Saldo",
@@ -41,5 +43,30 @@
     "Show Trash": "Tong Sampah",
     "No data found": "Tidak ada data ditemukan",
     "Restore Account": "Kembalikan Akun",
-    "Delete Permanently": "Hapus Permanen"
+    "Delete Permanently": "Hapus Permanen",
+
+    "Create Transaction": "Buat Transaksi",
+    "Transaction": "Transaksi",
+    "Debit Data": "Data Debit",
+    "Credit Data": "Data Kredit",
+    "Number of accounts": "Jumlah Akun",
+    "Number of transactions": "Jumlah Transaksi",
+    "Number of debit transactions": "Jumlah Transaksi Debit",
+    "Number of credit transactions": "Jumlah Transaksi Kredit",
+    "Transaction Type": "Jenis Transaksi",
+    "Credit/Income": "Kredit/Dana Masuk",
+    "Debit/Expense": "Debit/Dana Keluar",
+    "Amount": "Jumlah",
+    "Date": "Tanggal",
+    "Transaction Date": "Tanggal Transaksi",
+    "Transaction Attachment": "Lampiran Transaksi",
+    "Memo": "Deskripsi Transaksi",
+    "Insert transaction memo": "Masukan deskripsi transaksi",
+    "Save Transaction": "Simpan Transaksi",
+    "Description": "Deskripsi",
+    "Detail": "Detail",
+    "Edit": "Edit",
+    "Attachment": "Lampiran",
+    "Search by Description": "Cari berdasarkan Deskripsi",
+    "Transaction Detail": "Detail Transaksi"
 }
