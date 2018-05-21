@@ -34,11 +34,11 @@ class TransactionAttachment extends Model
 
     /**
      * Get url for this file.
-     * 
+     *
      * @return string
      */
     public function getUrlAttribute()
     {
-        return asset('storage/' . $this->file_path);
+        return asset('storage/'.$this->file_path);
     }
 }
