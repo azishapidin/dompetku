@@ -33,7 +33,7 @@
                             <td>{{ ($transactions->currentPage() - 1) * $transactions->perPage() + ($no + $key) }}</td>
                             <td>
                                 @if(!is_null($transaction->account->image))
-                                <img src="{{ asset('storage/' . $transaction->account->image) }}" style="max-width: 100px;" alt="{{ $transaction->account->name }}" title="{{ $transaction->account->name }}">
+                                <img src="{{ asset('storage/' . $transaction->account->image) }}" style="max-width: 100px; max-height: 30px;" alt="{{ $transaction->account->name }}" title="{{ $transaction->account->name }}">
                                 @else
                                 <i class="pe-7s-wallet"></i>
                                 @endif
