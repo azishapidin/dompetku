@@ -55,7 +55,7 @@
                             </td>
                             <td>
                                 @if(!is_null($account->image))
-                                <img src="{{ asset('storage/' . $account->image) }}" style="max-width: 100px;" alt="Logo">
+                                <img src="{{ asset('storage/' . $account->image) }}" style="max-width: 100px; max-height: 30px;" alt="Logo">
                                 @else
                                 <i class="pe-7s-wallet"></i>
                                 @endif
