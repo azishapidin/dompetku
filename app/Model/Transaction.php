@@ -69,7 +69,7 @@ class Transaction extends Model
      */
     public function getExcerptAttribute()
     {
-        $length = 25;
+        $length = 20;
         $description = $this->getAttribute('description');
 
         if (strlen($description) <= $length) {
