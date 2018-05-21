@@ -39,6 +39,18 @@ class TransactionController extends Controller
     }
 
     /**
+     * Show all user transaction.
+     * 
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+        $data['transactions'] = $this->request->user()->transactions()->paginate();
+
+        return view('transaction.index', $data);
+    }
+
+    /**
      * Create Transaction.
      *
      * @param int $accountId Account ID
@@ -89,7 +101,14 @@ class TransactionController extends Controller
         return redirect()->route('account.show', $account->id);
     }
 
-    public function detail($transactionId = '')
+    /**
+     * Show detail transaction.
+     * 
+     * @param integer $transactionId Transaction ID
+     * 
+     * @return \Illuminate\View\View
+     */
+    public function detail($transactionId = 0)
     {
         $transaction = Transaction::findOrFail($transactionId);
         if ($transaction->user_id != $this->request->user()->id) {

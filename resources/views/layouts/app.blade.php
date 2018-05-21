@@ -60,6 +60,12 @@
                         <p>{{ __('Account') }}</p>
                     </a>
                 </li>
+                <li class="{{ request()->is('transaction/*') || request()->is('transaction') || request()->is('transaction/*/edit') ? 'active' : '' }}">
+                    <a href="{{ route('transaction.index') }}">
+                        <i class="pe-7s-refresh-2"></i>
+                        <p>{{ __('Transaction') }}</p>
+                    </a>
+                </li>
             </ul>
     	</div>
     </div>
