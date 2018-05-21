@@ -14,6 +14,7 @@
                     <thead>
                         <tr>
                             <th class="w-1">#</th>
+                            <th></th>
                             <th>{{ __('Transaction Date') }}</th>
                             <th>{{ __('Amount') }}</th>
                             <th>{{ __('Description') }}</th>
@@ -29,7 +30,14 @@
                         @php $no = 1; @endphp
                         @foreach($transactions as $key => $transaction)
                         <tr>
-                            <th>{{ ($transactions->currentPage() - 1) * $transactions->perPage() + ($no + $key) }}</th>
+                            <td>{{ ($transactions->currentPage() - 1) * $transactions->perPage() + ($no + $key) }}</td>
+                            <td>
+                                @if(!is_null($transaction->account->image))
+                                <img src="{{ asset('storage/' . $transaction->account->image) }}" style="max-width: 100px;" alt="{{ $transaction->account->name }}" title="{{ $transaction->account->name }}">
+                                @else
+                                <i class="pe-7s-wallet"></i>
+                                @endif
+                            </td>
                             <td>
                                 {{ $transaction->date }}
                             </td>
