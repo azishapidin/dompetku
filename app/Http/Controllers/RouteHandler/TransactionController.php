@@ -45,7 +45,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        $data['transactions'] = $this->request->user()->transactions()->paginate();
+        $user = $this->request->user();
+        $data['transactions'] = $user->transactions()->orderBy('id', 'desc')->paginate();
 
         return view('transaction.index', $data);
     }
