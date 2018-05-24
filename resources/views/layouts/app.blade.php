@@ -66,6 +66,12 @@
                         <p>{{ __('Transaction') }}</p>
                     </a>
                 </li>
+                <li class="{{ request()->is('category/*') || request()->is('category') || request()->is('category/*/edit') ? 'active' : '' }}">
+                    <a href="{{ route('category.index') }}">
+                        <i class="pe-7s-refresh-2"></i>
+                        <p>{{ __('Transaction Category') }}</p>
+                    </a>
+                </li>
             </ul>
     	</div>
     </div>
