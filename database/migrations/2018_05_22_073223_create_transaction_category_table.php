@@ -16,10 +16,12 @@ class CreateTransactionCategoryTable extends Migration
         Schema::create('transaction_category', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('parent_id')->unsigned()->nullable();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->string('name');
             $table->timestamps();
 
-            $table->foreign('parent_id')->references('id')->on('transaction_category')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('transaction_category');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
