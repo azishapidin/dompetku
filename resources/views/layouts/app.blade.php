@@ -62,13 +62,13 @@
                 </li>
                 <li class="{{ request()->is('transaction/*') || request()->is('transaction') || request()->is('transaction/*/edit') ? 'active' : '' }}">
                     <a href="{{ route('transaction.index') }}">
-                        <i class="pe-7s-refresh-2"></i>
+                        <i class="pe-7s-repeat"></i>
                         <p>{{ __('Transaction') }}</p>
                     </a>
                 </li>
                 <li class="{{ request()->is('category/*') || request()->is('category') || request()->is('category/*/edit') ? 'active' : '' }}">
                     <a href="{{ route('category.index') }}">
-                        <i class="pe-7s-refresh-2"></i>
+                        <i class="pe-7s-notebook"></i>
                         <p>{{ __('Transaction Category') }}</p>
                     </a>
                 </li>
