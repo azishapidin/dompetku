@@ -5,6 +5,13 @@ namespace App\Http\Controllers\RouteHandler;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+/**
+ * Route Handler for Dashboard.
+ *
+ * @author  Azis Hapidin <azishapidin@gmail.com>
+ *
+ * @link    https://azishapidin.com/
+ */
 class HomeController extends Controller
 {
     /**
