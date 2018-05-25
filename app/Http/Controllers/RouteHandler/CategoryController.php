@@ -34,4 +34,14 @@ class CategoryController extends Controller
         $this->request = $request;
         $this->middleware('auth');
     }
+
+    /**
+     * Show all transaction category.
+     * 
+     * @return \Illuminate\View\View
+     */
+    public function index()
+    {
+        
+    }
 }
