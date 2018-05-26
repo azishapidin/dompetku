@@ -52,7 +52,7 @@
                             </td>
                             <td class="text-right">
                                 <a class="btn btn-fill btn-info btn-secondary btn-sm" href="{{ route('category.edit', $category->id) }}">{{ __('Edit Category') }}</a>
-                                <a class="btn btn-fill btn-danger btn-secondary btn-sm delete">
+                                <a class="btn btn-fill btn-danger btn-secondary btn-sm delete-permanent">
                                     {{ __('Delete') }}
                                     <form id="delete-{{ $category->id }}" action="{{ route('category.destroy', $category->id) }}" method="POST" style="display:none">
                                         {{ method_field('delete') }} {{ csrf_field() }}
@@ -78,20 +78,6 @@
     crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script>
-    $('.delete').on('click', function () {
-        var form = $(this).find('form');
-        swal({
-            title: '{{ __("Are you sure?") }}',
-            text: '{{ __("Account will be moved to Trash") }}.',
-            html: true,
-            confirmButtonColor: '#d9534f',
-            showCancelButton: true,
-        }, function () {
-            form.submit();
-        });
-        return false;
-    });
-
     $('.delete-permanent').on('click', function () {
         var form = $(this).find('form');
         swal({

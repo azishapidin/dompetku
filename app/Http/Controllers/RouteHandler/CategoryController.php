@@ -46,4 +46,18 @@ class CategoryController extends Controller
 
         return view('category.index', $data);
     }
+
+    /**
+     * Show form for create category.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        $categories = TransactionCategory::all();
+
+        return view('category.create', [
+            'categories' => $categories
+        ]);
+    }
 }
