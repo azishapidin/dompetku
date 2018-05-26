@@ -21,4 +21,14 @@ class TransactionCategory extends Model
     protected $fillable = [
         'id', 'user_id', 'parent_id', 'name'
     ];
+
+    /**
+     * Parent of category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function parent()
+    {
+        return $this->hasOne(TransactionCategory::class, 'id', 'parent_id');
+    }
 }

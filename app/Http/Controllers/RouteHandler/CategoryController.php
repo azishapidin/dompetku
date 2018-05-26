@@ -4,6 +4,7 @@ namespace App\Http\Controllers\RouteHandler;
 
 use App\Http\Controllers\Controller;
 use App\Model\TransactionCategory;
+use App\Http\Requests\CategoryStore;
 use Illuminate\Http\Request;
 
 /**
@@ -59,5 +60,21 @@ class CategoryController extends Controller
         return view('category.create', [
             'categories' => $categories
         ]);
+    }
+
+    /**
+     * Store Category to Database.
+     *
+     * @param \App\Http\Requests\CategoryStore $request Request from User after Validation
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function store(CategoryStore $request)
+    {
+        $posted = $request->except(['_token', '_method']);
+        $posted['user_id'] = $request->user()->id;
+        TransactionCategory::create($posted);
+
+        return redirect()->route('category.index');
     }
 }
