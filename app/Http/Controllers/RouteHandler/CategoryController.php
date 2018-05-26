@@ -36,12 +36,14 @@ class CategoryController extends Controller
     }
 
     /**
-     * Show all transaction category.
+     * Show all user transaction category.
      * 
      * @return \Illuminate\View\View
      */
     public function index()
     {
-        
+        $data['categories'] = $this->request->user()->categories;
+
+        return view('category.index', $data);
     }
 }

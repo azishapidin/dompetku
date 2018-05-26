@@ -20,7 +20,6 @@ class CreateTransactionCategoryTable extends Migration
             $table->string('name');
             $table->timestamps();
 
-            $table->foreign('parent_id')->references('id')->on('transaction_category')->onDelete();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
