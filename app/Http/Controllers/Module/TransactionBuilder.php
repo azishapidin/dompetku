@@ -87,6 +87,7 @@ class TransactionBuilder extends Controller
             'amount'        => 0,
             'type'          => '',
             'description'   => '',
+            'category_id'   => null,
             'balance'       => $this->balance,
         ];
     }
@@ -145,6 +146,21 @@ class TransactionBuilder extends Controller
     public function attachFile($uploaded = [])
     {
         $this->attachment = $uploaded;
+    }
+
+    /**
+     * Set category.
+     *
+     * @param integer $categoryId Category ID.
+     *
+     * @return void
+     */
+    public function setCategory($categoryId = 0)
+    {
+        if (is_null($categoryId)) {
+            return;
+        }
+        $this->payload['category_id'] = $categoryId;
     }
 
     /**

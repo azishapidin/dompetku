@@ -49,14 +49,15 @@
                                 @endif
                             </div>
                             <div class="form-group">
-                                <div class="form-label">{{ __('Transaction Attachment') }}</div>
-                                @for ($input = 1; $input <= config('transaction.max_attachment'); $input++)
-                                    <div class="custom-file" style="margin-bottom: 10px;">
-                                        <input name="attachment[]" type="file">
-                                    </div>
-                                @endfor
-                                @if ($errors->has('attachment.*'))
-                                <small class="text-danger">{{ $errors->first('attachment.*') }}</small>
+                                <label class="form-label">{{ __('Transaction Category') }}</label>
+                                <select name="category_id" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}">
+                                    <option>-- {{ __('Select Category') }} --</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                @if ($errors->has('category_id'))
+                                <small class="text-danger">{{ $errors->first('category_id') }}</small>
                                 @endif
                             </div>
                         </div>
@@ -69,6 +70,23 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <div class="form-label">{{ __('Transaction Attachment') }}</div>
+                                    @for ($input = 1; $input <= config('transaction.max_attachment'); $input++)
+                                        <div class="custom-file" style="margin-bottom: 10px;">
+                                            <input name="attachment[]" type="file">
+                                        </div>
+                                    @endfor
+                                    @if ($errors->has('attachment.*'))
+                                    <small class="text-danger">{{ $errors->first('attachment.*') }}</small>
+                                    @endif
+                                </div>
+                        </div>
+                        <div class="col-md-7"></div>
                     </div>
 
                     <button type="submit" class="btn btn-info btn-fill pull-right">{{ __('Save Transaction') }}</button>

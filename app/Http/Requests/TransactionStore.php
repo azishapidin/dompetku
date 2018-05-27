@@ -29,6 +29,7 @@ class TransactionStore extends FormRequest
             'date'          => 'required|date_format:"Y-m-d"',
             'description'   => 'required|max:255',
             'attachment.*'  => 'mimes:jpg,jpeg,png,pdf',
+            'category_id'   => '',
         ];
     }
 }

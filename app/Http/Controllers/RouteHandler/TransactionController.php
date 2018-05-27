@@ -7,6 +7,7 @@ use App\Http\Controllers\Module\TransactionBuilder;
 use App\Http\Requests\TransactionStore;
 use App\Model\Account;
 use App\Model\Transaction;
+use App\Model\TransactionCategory;
 use Illuminate\Http\Request;
 
 /**
@@ -61,12 +62,14 @@ class TransactionController extends Controller
     public function create($accountId = 0)
     {
         $account = Account::withTrashed()->findOrFail($accountId);
+        $categories = TransactionCategory::all();
         if ($account->user_id != $this->request->user()->id) {
             abort(403);
         }
 
         return view('transaction.create', [
-            'account' => $account,
+            'account'       => $account,
+            'categories'    => $categories,
         ]);
     }
 
@@ -94,6 +97,9 @@ class TransactionController extends Controller
         }
         if (isset($posted['attachment']) && count($posted['attachment']) > 0) {
             $builder->attachFile($posted['attachment']);
+        }
+        if (isset($posted['category_id']) && !is_null($posted['category_id'])) {
+            $builder->setCategory($posted['category_id']);
         }
         $builder->setDescription($posted['description']);
         $builder->setDate($posted['date']);
