@@ -43,7 +43,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $data['categories'] = $this->request->user()->categories;
+        $data['categories'] = $this->request->user()->categories()->paginate();
 
         return view('category.index', $data);
     }

@@ -63,9 +63,9 @@
                         @endforeach
                     </tbody>
                 </table>
-
             </div>
         </div>
+        {{ $categories->links('vendor.pagination.bootstrap-4') }}
     </div>
     <div class="col-md-4">
         @include('part.profile')
