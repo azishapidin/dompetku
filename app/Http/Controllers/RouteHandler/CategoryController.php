@@ -77,4 +77,43 @@ class CategoryController extends Controller
 
         return redirect()->route('category.index');
     }
+
+    /**
+     * Show edit form.
+     *
+     * @param \App\Model\TransactionCategory $category Category Model
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit(TransactionCategory $category)
+    {
+        $categories = TransactionCategory::all();
+        if ($category->user_id != $this->request->user()->id) {
+            abort(403);
+        }
+
+        return view('category.edit', [
+            'category'      => $category,
+            'categories'    => $categories,
+        ]);
+    }
+
+    /**
+     * Update to Database.
+     *
+     * @param \App\Model\TransactionCategory    $category   Category Model
+     * @param \App\Http\Requests\CategoryStore  $request    Request from User after Validation
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(TransactionCategory $category, CategoryStore $request)
+    {
+        if ($category->user_id != $this->request->user()->id) {
+            abort(403);
+        }
+        $posted = $request->except(['_token', '_method']);
+        $category->update($posted);
+
+        return redirect()->route('category.edit', $category->id);
+    }
 }
