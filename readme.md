@@ -22,9 +22,11 @@ DompetKu is Open Source CMS Cashflow Management for multiple users and multiple 
 - [x] Create Builder Income and Expenses.
 - [x] CRUD Accounts.
 - [x] Form Add Income and Expenses data.
-- [ ] Transaction Category.
-- [ ] List Data Income and Expenses.
-- [ ] Account Settings.
+- [x] Transaction Category.
+- [x] List Data Income and Expenses.
+- [x] Account Settings.
+- [ ] Statistics.
+- [ ] Update Profile.
 
 ## License
 
