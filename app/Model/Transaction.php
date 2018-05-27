@@ -78,4 +78,14 @@ class Transaction extends Model
 
         return substr($description, 0, $length).'...';
     }
+
+    /**
+     * Relation to Category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function category()
+    {
+        return $this->belongsTo(TransactionCategory::class);
+    }
 }

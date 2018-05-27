@@ -4,6 +4,9 @@
     {{ __('Amount') }}: <strong>{{ $transaction->formattedAmount }}</strong><br>
     {{ __('Balance') }}: <strong>{{ $transaction->formattedBalance }}</strong><br>
     {{ __('Description') }}:<br><strong>{{ $transaction->description }}</strong><br>
+    @if(!is_null($transaction->category))
+        {{ __('Category') }}:<br><strong>{{ $transaction->category->name }}</strong><br>
+    @endif
     @if($transaction->attachment->count() > 0)
     -----------------------<br>
     @endif
