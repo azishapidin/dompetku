@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\RouteHandler;
 
 use App\Http\Controllers\Controller;
-use App\Model\TransactionCategory;
 use App\Http\Requests\CategoryStore;
+use App\Model\TransactionCategory;
 use Illuminate\Http\Request;
 
 /**
@@ -38,7 +38,7 @@ class CategoryController extends Controller
 
     /**
      * Show all user transaction category.
-     * 
+     *
      * @return \Illuminate\View\View
      */
     public function index()
@@ -58,7 +58,7 @@ class CategoryController extends Controller
         $categories = TransactionCategory::all();
 
         return view('category.create', [
-            'categories' => $categories
+            'categories' => $categories,
         ]);
     }
 
@@ -101,8 +101,8 @@ class CategoryController extends Controller
     /**
      * Update to Database.
      *
-     * @param \App\Model\TransactionCategory    $category   Category Model
-     * @param \App\Http\Requests\CategoryStore  $request    Request from User after Validation
+     * @param \App\Model\TransactionCategory   $category Category Model
+     * @param \App\Http\Requests\CategoryStore $request  Request from User after Validation
      *
      * @return \Illuminate\Http\Response
      */
