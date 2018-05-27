@@ -40,7 +40,7 @@ class TransactionController extends Controller
 
     /**
      * Show all user transaction.
-     * 
+     *
      * @return \Illuminate\View\View
      */
     public function index()
@@ -104,9 +104,9 @@ class TransactionController extends Controller
 
     /**
      * Show detail transaction.
-     * 
-     * @param integer $transactionId Transaction ID
-     * 
+     *
+     * @param int $transactionId Transaction ID
+     *
      * @return \Illuminate\View\View
      */
     public function detail($transactionId = 0)
