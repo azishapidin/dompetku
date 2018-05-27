@@ -151,7 +151,7 @@ class TransactionBuilder extends Controller
     /**
      * Set category.
      *
-     * @param integer $categoryId Category ID.
+     * @param int $categoryId Category ID.
      *
      * @return void
      */
