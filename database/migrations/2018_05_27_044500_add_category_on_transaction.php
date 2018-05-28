@@ -15,8 +15,6 @@ class AddCategoryOnTransaction extends Migration
     {
         Schema::table('transactions', function (Blueprint $table) {
             $table->integer('category_id')->unsigned()->nullable()->after('account_id');
-
-            $table->foreign('category_id')->references('id')->on('transaction_category')->onDelete('cascade');
         });
     }
 

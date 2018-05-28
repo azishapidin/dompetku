@@ -74,6 +74,28 @@ class TransactionController extends Controller
     }
 
     /**
+     * Edit transaction form.
+     *
+     * @param int $transactionId Transaction ID
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit($transactionId = 0)
+    {
+        $transaction = Transaction::withTrashed()->findOrFail($transactionId);
+        $categories = TransactionCategory::all();
+        if ($transaction->user_id != $this->request->user()->id) {
+            abort(403);
+        }
+
+        return view('transaction.edit', [
+            'transaction'   => $transaction,
+            'account'       => $transaction->account,
+            'categories'    => $categories,
+        ]);
+    }
+
+    /**
      * Store transaction to database.
      *
      * @param App\Http\Requests\TransactionStore $request   Request from User after Validation

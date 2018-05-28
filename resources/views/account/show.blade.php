@@ -66,7 +66,7 @@
                             <td>                                
                                 <!-- Link to open the modal -->
                                 <button class="btn btn-default btn-sm open-detail" data-id="{{ $transaction->id }}"> <span class="fa fa-eye"></span> {{ __("Detail") }}</button>
-                                <button class="btn btn-default btn-sm"> <span class="fa fa-pencil"></span> {{ __("Edit") }}</button>
+                                <a href="{{ route('transaction.edit', $transaction->id) }}"><button class="btn btn-default btn-sm"> <span class="fa fa-pencil"></span> {{ __("Edit") }}</button></a>
                             </td>
                         </tr>
                         @endforeach

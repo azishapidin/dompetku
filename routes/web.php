@@ -27,6 +27,8 @@ Route::delete('/account/{id}/permanent', 'RouteHandler\AccountController@deleteP
 
 // Transaction Controller
 Route::get('/transaction', 'RouteHandler\TransactionController@index')->name('transaction.index');
+Route::get('/transaction/{transactionId}/edit', 'RouteHandler\TransactionController@edit')->name('transaction.edit');
+Route::patch('/transaction/{transactionId}/edit', 'RouteHandler\TransactionController@update')->name('transaction.update');
 Route::get('/transaction/{transactionId}/detail', 'RouteHandler\TransactionController@detail')->name('transaction.detail');
 Route::get('/account/{accountId}/add', 'RouteHandler\TransactionController@create')->name('transaction.create');
 Route::post('/account/{accountId}/add', 'RouteHandler\TransactionController@store')->name('transaction.store');
