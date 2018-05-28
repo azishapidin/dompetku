@@ -96,6 +96,35 @@ class TransactionController extends Controller
     }
 
     /**
+     * Update transaction.
+     *
+     * @param int $transactionId Transaction ID
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update($transactionId = 0)
+    {
+        $transaction = Transaction::findOrFail($transactionId);
+        if ($transaction->user_id != $this->request->user()->id) {
+            abort(403);
+        }
+
+        $fields = [
+            'date', 'category_id', 'description'
+        ];
+
+        foreach ($fields as $key) {
+            if (is_null($this->request->{$key})) {
+                continue;
+            }
+            $transaction->{$key} = $this->request->{$key};
+        }
+        $transaction->save();
+
+        return redirect()->back();
+    }
+
+    /**
      * Store transaction to database.
      *
      * @param App\Http\Requests\TransactionStore $request   Request from User after Validation

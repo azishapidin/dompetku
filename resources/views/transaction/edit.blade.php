@@ -15,6 +15,7 @@
             <div class="content">
                     <form action="{{ route('transaction.update', $account->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    {{ method_field('PATCH') }}
                     <div class="row">
                         <div class="col-md-5">
                             <div class="form-group">
@@ -29,7 +30,7 @@
                                 <select name="category_id" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}">
                                     <option>-- {{ __('Select Category') }} --</option>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        <option value="{{ $category->id }}" @if($category->id == $transaction->category_id) selected @endif>{{ $category->name }}</option>
                                     @endforeach
                                 </select>
                                 @if ($errors->has('category_id'))
