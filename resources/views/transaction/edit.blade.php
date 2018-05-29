@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <label class="form-label">{{ __('Transaction Category') }}</label>
                                 <select name="category_id" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}">
-                                    <option>-- {{ __('Select Category') }} --</option>
+                                    <option value="">-- {{ __('Select Category') }} --</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}" @if($category->id == $transaction->category_id) selected @endif>{{ $category->name }}</option>
                                     @endforeach

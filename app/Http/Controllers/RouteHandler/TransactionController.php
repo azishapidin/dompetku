@@ -5,6 +5,7 @@ namespace App\Http\Controllers\RouteHandler;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Module\TransactionBuilder;
 use App\Http\Requests\TransactionStore;
+use App\Http\Requests\TransactionUpdate;
 use App\Model\Account;
 use App\Model\Transaction;
 use App\Model\TransactionCategory;
@@ -98,11 +99,12 @@ class TransactionController extends Controller
     /**
      * Update transaction.
      *
-     * @param int $transactionId Transaction ID
+     * @param App\Http\Requests\TransactionUpdate    $request        Request from User after Validation
+     * @param int                                   $transactionId  Transaction ID
      *
      * @return \Illuminate\Http\Response
      */
-    public function update($transactionId = 0)
+    public function update(TransactionUpdate $request, $transactionId = 0)
     {
         $transaction = Transaction::findOrFail($transactionId);
         if ($transaction->user_id != $this->request->user()->id) {
@@ -113,13 +115,8 @@ class TransactionController extends Controller
             'date', 'category_id', 'description'
         ];
 
-        foreach ($fields as $key) {
-            if (is_null($this->request->{$key})) {
-                continue;
-            }
-            $transaction->{$key} = $this->request->{$key};
-        }
-        $transaction->save();
+        $posted = $request->only($fields);
+        $transaction->update($posted);
 
         return redirect()->back();
     }
