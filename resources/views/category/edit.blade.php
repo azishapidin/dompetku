@@ -41,6 +41,21 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-label">{{ __('Show on Statistics') }}</label>
+                                <select name="show_on_stats" class="form-control{{ $errors->has('show_on_stats') ? ' has-error' : '' }}">
+                                    <option value="1" @if($category->show_on_stats == 1) selected @endif>{{ __('Show') }}</option>
+                                    <option value="0" @if($category->show_on_stats == 0) selected @endif>{{ __('Hide') }}</option>
+                                </select>
+                                @if ($errors->has('show_on_stats'))
+                                <small class="text-danger">{{ $errors->first('show_on_stats') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn btn-info btn-fill pull-right">{{ __('Save Category') }}</button>
                     <div class="clearfix"></div>
                 </form>
