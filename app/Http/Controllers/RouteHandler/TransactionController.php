@@ -118,7 +118,7 @@ class TransactionController extends Controller
         $posted = $request->only($fields);
         $transaction->update($posted);
 
-        return redirect()->back();
+        return redirect(route('account.show', $transaction->account_id));
     }
 
     /**
