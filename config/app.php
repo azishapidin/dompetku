@@ -152,6 +152,7 @@ return [
          */
         Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -213,6 +214,7 @@ return [
         'Gravatar'     => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
         'Debugbar'     => Barryvdh\Debugbar\Facade::class,
         'Hashids'      => Vinkla\Hashids\Facades\Hashids::class,
+        'Lava'         => Khill\Lavacharts\Laravel\LavachartsFacade::class,
 
     ],
 
