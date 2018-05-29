@@ -41,16 +41,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $data = [];
-        // $this->request->user()->accounts()->distinct('currency')->get(['currency'])
-        //      ->pluck('currency')->each(function($currency) use($data) {
-        //         $data['balance_by_currency'][$currency] = $this->request->user()->accounts()->where('currency', $currency)->sum('balance');
-        //      });
-
+        $lava = new \Khill\Lavacharts\Lavacharts;
+        $transactionCounter = $lava->DataTable();
+        
         $data['account_count'] = $this->request->user()->accounts()->count();
         $data['transaction_count'] = $this->request->user()->transactions()->count();
         $data['credit_count'] = $this->request->user()->transactions()->where('type', 'cr')->count();
         $data['debit_count'] = $this->request->user()->transactions()->where('type', 'db')->count();
+
+        $transactionCounter->addStringColumn(__('Transaction Type'))
+                ->addNumberColumn(__('Counter'))
+                ->addRow([__('Credit'), $data['credit_count']])
+                ->addRow([__('Debit'), $data['debit_count']]);
+
+        $lava->PieChart('TypeCounter', $transactionCounter, [
+            'title'  => __('Transaction Counter'),
+            'is3D'   => false,
+        ]);
+
+        $data['lava'] = $lava;
 
         return view('home', $data);
     }

@@ -87,6 +87,19 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-6">
+
+        </div>
+        <div class="col-md-6">
+            {!! $lava->render('PieChart', 'TypeCounter', 'type-counter') !!}
+            <div class="chart">
+                <div id="type-counter" style="height: 350px;"></div>
+            </div>
+        </div>
+    </div>
+
 </div>
 @endsection
 
