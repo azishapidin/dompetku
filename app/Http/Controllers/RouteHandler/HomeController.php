@@ -62,7 +62,10 @@ class HomeController extends Controller
         ]);
 
         // Transaction category counter
-        $categories = TransactionCategory::doesntHave('parent')->where('user_id', $this->request->user()->id)->get();
+        $categories = TransactionCategory::doesntHave('parent')
+                                        ->where('user_id', $this->request->user()->id)
+                                        ->where('show_on_stats', 1)
+                                        ->get();
         foreach ($categories as $category) {
             if ($category->child()->count() == 0) {
                 $categoryCounter[] = [
@@ -71,7 +74,8 @@ class HomeController extends Controller
                 ];
             } else {
                 $total = 0;
-                foreach ($category->child as $child) {
+                $childs = $category->child()->where('show_on_stats', 1);
+                foreach ($childs as $child) {
                     $total += $child->transactions()->sum('amount');
                 }
                 $categoryCounter[] = [
