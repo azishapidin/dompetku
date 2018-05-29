@@ -92,7 +92,7 @@
         <div class="col-md-6">
             {!! $lava->render('BarChart', 'CategoryCounter', 'category-counter') !!}
             <div class="chart">
-                <div id="category-counter"></div>
+                <div id="category-counter" style="height: 500px;"></div>
             </div>
         </div>
         <div class="col-md-6">
