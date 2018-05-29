@@ -62,12 +62,24 @@ class HomeController extends Controller
         ]);
 
         // Transaction category counter
-        $categories = TransactionCategory::where('user_id', $this->request->user()->id)->get();
+        $categories = TransactionCategory::doesntHave('parent')->where('user_id', $this->request->user()->id)->get();
         foreach ($categories as $category) {
-            $categoryCounter[] = [
-                'name'  => $category->name,
-                'total' => $category->transactions()->sum('amount'),
-            ];
+            if ($category->child()->count() == 0) {
+                $categoryCounter[] = [
+                    'name'  => $category->name,
+                    'total' => $category->transactions()->sum('amount'),
+                ];
+            } else {
+                $total = 0;
+                foreach ($category->child as $child) {
+                    $total += $child->transactions()->sum('amount');
+                }
+                $categoryCounter[] = [
+                    'name'  => $category->name,
+                    'total' => $total,
+                ];
+            }
+            
         }
 
         $categoryChart = $lava->DataTable();

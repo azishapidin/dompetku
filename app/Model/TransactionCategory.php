@@ -33,6 +33,16 @@ class TransactionCategory extends Model
     }
 
     /**
+     * Child of category.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function child()
+    {
+        return $this->hasMany(self::class, 'parent_id', 'id');
+    }
+
+    /**
      * Has many to Transaction.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
