@@ -11,10 +11,10 @@ class Transaction extends Model
 
     /**
      * Set primary key.
-     * 
+     *
      * @var string
      */
-    protected $primaryKey = "id";
+    protected $primaryKey = 'id';
 
     /**
      * The attributes that are mass assignable.
