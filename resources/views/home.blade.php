@@ -90,12 +90,15 @@
 
     <div class="row">
         <div class="col-md-6">
-
+            {!! $lava->render('BarChart', 'CategoryCounter', 'category-counter') !!}
+            <div class="chart">
+                <div id="category-counter"></div>
+            </div>
         </div>
         <div class="col-md-6">
             {!! $lava->render('PieChart', 'TypeCounter', 'type-counter') !!}
             <div class="chart">
-                <div id="type-counter" style="height: 350px;"></div>
+                <div id="type-counter"></div>
             </div>
         </div>
     </div>
