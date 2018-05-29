@@ -10,6 +10,13 @@ class Transaction extends Model
     use SoftDeletes;
 
     /**
+     * Set primary key.
+     * 
+     * @var string
+     */
+    protected $primaryKey = "id";
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
