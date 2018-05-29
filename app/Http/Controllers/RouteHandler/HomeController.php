@@ -74,7 +74,7 @@ class HomeController extends Controller
                 ];
             } else {
                 $total = 0;
-                $childs = $category->child()->where('show_on_stats', 1);
+                $childs = $category->child()->where('show_on_stats', 1)->get();
                 foreach ($childs as $child) {
                     $total += $child->transactions()->sum('amount');
                 }
