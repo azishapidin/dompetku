@@ -10,7 +10,8 @@
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "thomaswelton/laravel-gravatar": "^1.1",
-        "vinkla/hashids": "^5.0"
+        "vinkla/hashids": "^5.0",
+        "khill/lavacharts" : "3.0.*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",
