@@ -66,17 +66,17 @@ class HomeController extends Controller
         foreach ($categories as $category) {
             $categoryCounter[] = [
                 'name'  => $category->name,
-                'count' => $category->transactions()->count(),
+                'total' => $category->transactions()->sum('amount'),
             ];
         }
 
         $categoryChart = $lava->DataTable();
-        $categoryChart->addStringColumn(__('Category Name'))->addNumberColumn(__('Count'));
+        $categoryChart->addStringColumn(__('Category Name'))->addNumberColumn(__('Total'));
         foreach ($categoryCounter as $counter) {
-            if ($counter['count'] == 0) {
+            if ($counter['total'] == 0) {
                 continue;
             }
-            $categoryChart->addRow([$counter['name'], $counter['count']]);
+            $categoryChart->addRow([$counter['name'], $counter['total']]);
         }
 
         $lava->BarChart('CategoryCounter', $categoryChart);
