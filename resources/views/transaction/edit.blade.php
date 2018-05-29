@@ -13,7 +13,7 @@
                 <h4 class="title">{{ __('Edit Transaction') }}</h4>
             </div>
             <div class="content">
-                    <form action="{{ route('transaction.update', $account->id) }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('transaction.update', $transaction->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     {{ method_field('PATCH') }}
                     <div class="row">
