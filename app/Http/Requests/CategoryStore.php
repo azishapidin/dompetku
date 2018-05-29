@@ -25,7 +25,7 @@ class CategoryStore extends FormRequest
     {
         return [
             'name'          => 'required',
-            'show_on_stats' => 'in:1,0'
+            'show_on_stats' => 'in:1,0',
         ];
     }
 }

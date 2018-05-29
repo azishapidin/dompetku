@@ -99,8 +99,8 @@ class TransactionController extends Controller
     /**
      * Update transaction.
      *
-     * @param App\Http\Requests\TransactionUpdate   $request        Request from User after Validation
-     * @param int                                   $transactionId  Transaction ID
+     * @param App\Http\Requests\TransactionUpdate $request       Request from User after Validation
+     * @param int                                 $transactionId Transaction ID
      *
      * @return \Illuminate\Http\Response
      */
@@ -112,7 +112,7 @@ class TransactionController extends Controller
         }
 
         $fields = [
-            'date', 'category_id', 'description'
+            'date', 'category_id', 'description',
         ];
 
         $posted = $request->only($fields);
