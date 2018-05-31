@@ -23,7 +23,7 @@
                     <thead>
                         <tr>
                             <th class="w-1">#</th>
-                            <th>{{ __('Name') }}</th>
+                            <th>{{ __('Category Name') }}</th>
                             <th>{{ __('Parent') }}</th>
                             <th>{{ __('Transactions Count') }}</th>
                             <th></th>
@@ -49,6 +49,9 @@
                                 @else
                                 -
                                 @endif
+                            </td>
+                            <td>
+                                {{ $category->transactions()->count() }}
                             </td>
                             <td class="text-right">
                                 <a class="btn btn-fill btn-info btn-secondary btn-sm" href="{{ route('category.edit', $category->id) }}">{{ __('Edit Category') }}</a>

@@ -45,6 +45,10 @@
     "Restore Account": "Kembalikan Akun",
     "Delete Permanently": "Hapus Permanen",
 
+    "Credit": "Kredit",
+    "Debit": "Debit",
+    "Transaction Counter": "Counter Transaksi",
+    "Total": "Jumlah",
     "Create Transaction": "Buat Transaksi",
     "Transaction": "Transaksi",
     "Debit Data": "Data Debit",
@@ -69,5 +73,12 @@
     "Attachment": "Lampiran",
     "Search by Description": "Cari berdasarkan Deskripsi",
     "Transaction Detail": "Detail Transaksi",
-    "All Transaction": "Semua Transaksi"
+    "All Transaction": "Semua Transaksi",
+
+    "Transaction Category": "Kategori Transaksi",
+    "Create Transaction Category": "Buat Kategori Transaksi",
+    "Category Name": "Nama Kategori",
+    "Delete": "Hapus",
+    "Transactions Count": "Jumlah Transaksi",
+    "Edit Category": "Edit Kategori"
 }
