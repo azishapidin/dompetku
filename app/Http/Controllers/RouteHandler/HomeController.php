@@ -42,7 +42,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $lava = new \Khill\Lavacharts\Lavacharts;
+        $lava = new \Khill\Lavacharts\Lavacharts();
         $transactionCounter = $lava->DataTable();
 
         $data['account_count'] = $this->request->user()->accounts()->count();
@@ -83,7 +83,6 @@ class HomeController extends Controller
                     'total' => $total,
                 ];
             }
-            
         }
 
         $categoryChart = $lava->DataTable();

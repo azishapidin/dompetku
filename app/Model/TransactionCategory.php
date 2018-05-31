@@ -19,7 +19,7 @@ class TransactionCategory extends Model
      * @var array
      */
     protected $fillable = [
-        'id', 'user_id', 'parent_id', 'name', 'show_on_stats'
+        'id', 'user_id', 'parent_id', 'name', 'show_on_stats',
     ];
 
     /**
