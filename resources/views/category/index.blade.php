@@ -35,11 +35,10 @@
                             <td colspan="5" class="text-center">{{ __('No data found') }}</td>
                         </tr>
                         @endif
+                        @php $no = 1; @endphp
                         @foreach($categories as $key => $category)
                         <tr>
-                            <td>
-                                <span class="text-muted">{{ $key + 1 }}</span>
-                            </td>
+                            <td>{{ ($categories->currentPage() - 1) * $categories->perPage() + ($no + $key) }}</td>
                             <td>
                                 {{ $category->name }}
                             </td>

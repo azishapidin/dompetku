@@ -45,7 +45,7 @@
                         @php $no = 1; @endphp
                         @foreach($transactions as $key => $transaction)
                         <tr>
-                            <th>{{ ($transactions->currentPage() - 1) * $transactions->perPage() + ($no + $key) }}</th>
+                            <td>{{ ($transactions->currentPage() - 1) * $transactions->perPage() + ($no + $key) }}</td>
                             <td>
                                 {{ $transaction->date }}
                             </td>
