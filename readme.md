@@ -25,7 +25,7 @@ DompetKu is Open Source CMS Cashflow Management for multiple users and multiple 
 - [x] Transaction Category.
 - [x] List Data Income and Expenses.
 - [x] Account Settings.
-- [ ] Statistics.
+- [x] Statistics.
 - [ ] Update Profile.
 
 ## License
