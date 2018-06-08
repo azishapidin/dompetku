@@ -2,6 +2,7 @@
 @section('title', __('Account'))
 
 @section('before_script')
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">
 <style>
     .account-type button {
