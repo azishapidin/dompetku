@@ -7,7 +7,7 @@
 
 ## About DompetKu
 
-DompetKu is Open Source CMS Cashflow Management for multiple users and multiple Accounts, build with Laravel Framework (PHP).
+DompetKu is Open Source CMS Cashflow Management for multiple users and multiple Accounts, build with Laravel Framework 5.6 (PHP).
 
 ## Database Relational Schema
 
