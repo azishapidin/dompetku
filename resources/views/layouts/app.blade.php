@@ -63,7 +63,7 @@
                 <li class="{{ request()->is('transaction/*') || request()->is('transaction') || request()->is('transaction/*/edit') ? 'active' : '' }}">
                     <a href="{{ route('transaction.index') }}">
                         <i class="pe-7s-repeat"></i>
-                        <p>{{ __('Transaction') }}</p>
+                        <p>{{ __('All Transaction') }}</p>
                     </a>
                 </li>
                 <li class="{{ request()->is('category/*') || request()->is('category') || request()->is('category/*/edit') ? 'active' : '' }}">
