@@ -67,22 +67,18 @@ class HomeController extends Controller
                                         ->where('show_on_stats', 1)
                                         ->get();
         foreach ($categories as $category) {
-            if ($category->child()->count() == 0) {
-                $categoryCounter[] = [
-                    'name'  => $category->name,
-                    'total' => $category->transactions()->sum('amount'),
-                ];
-            } else {
-                $total = 0;
-                $childs = $category->child()->where('show_on_stats', 1)->get();
-                foreach ($childs as $child) {
-                    $total += $child->transactions()->sum('amount');
-                }
-                $categoryCounter[] = [
-                    'name'  => $category->name,
-                    'total' => $total,
-                ];
+            $total = $category->transactions()->sum('amount');
+
+            // Sum childs
+            $childs = $category->child()->where('show_on_stats', 1)->get();
+            foreach ($childs as $child) {
+                $total += $child->transactions()->sum('amount');
             }
+
+            $categoryCounter[] = [
+                'name'  => $category->name,
+                'total' => $total,
+            ];
         }
 
         $categoryChart = $lava->DataTable();
