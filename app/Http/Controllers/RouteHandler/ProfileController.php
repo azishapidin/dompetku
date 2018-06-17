@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\RouteHandler;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 /**
  * Controller for hanling user profile page.
@@ -35,8 +35,8 @@ class ProfileController extends Controller
     }
 
     /**
-     * Show user profile
-     * 
+     * Show user profile.
+     *
      * @return \Illuminate\View\View
      */
     public function index()

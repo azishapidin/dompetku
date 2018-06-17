@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class AddUserInformationsOnUsersTable extends Migration
 {
@@ -13,7 +13,7 @@ class AddUserInformationsOnUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $table){
+        Schema::table('users', function (Blueprint $table) {
             $table->string('bio')->after('remember_token')->nullable();
             $table->string('default_currency')->after('bio')->nullable();
             $table->string('show_stats_on_dashboard')->after('default_currency')->nullable();
@@ -27,7 +27,7 @@ class AddUserInformationsOnUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function(Blueprint $table){
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('bio');
             $table->dropColumn('default_currency');
             $table->dropColumn('show_stats_on_dashboard');
