@@ -35,3 +35,6 @@ Route::post('/account/{accountId}/add', 'RouteHandler\TransactionController@stor
 
 // Transaction Category Controller
 Route::resource('/category', 'RouteHandler\CategoryController');
+
+// Profile
+Route::get('profile', 'RouteHandler\ProfileController@index')->name('profile');

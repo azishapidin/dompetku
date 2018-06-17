@@ -72,6 +72,12 @@
                         <p>{{ __('Transaction Category') }}</p>
                     </a>
                 </li>
+                <li class="{{ request()->is('profile') ? 'active' : '' }}">
+                    <a href="{{ route('profile') }}">
+                        <i class="pe-7s-user"></i>
+                        <p>{{ __('Profile') }}</p>
+                    </a>
+                </li>
             </ul>
     	</div>
     </div>
