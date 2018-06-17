@@ -77,7 +77,7 @@ class HomeController extends Controller
 
     /**
      * Transaction counter by type (Credit or Debit).
-     * 
+     *
      * @return void
      */
     public function countByType()
@@ -96,7 +96,7 @@ class HomeController extends Controller
 
     /**
      * Sum all transaction by category.
-     * 
+     *
      * @return void
      */
     public function sumByTransactionCategory()
