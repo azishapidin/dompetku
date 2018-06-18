@@ -90,16 +90,74 @@
 
     <div class="row">
         <div class="col-md-6">
-            {!! $lava->render('BarChart', 'CategoryCounter', 'category-counter') !!}
-            <div class="chart">
-                <div id="category-counter" style="height: 500px;"></div>
+
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">{{ __('Statistics') }}</h4>
+                    <p class="category">{!! __('Statistics from <strong>:start</strong> to <strong>:end</strong>', [
+                        'start' => $byDate['from'],
+                        'end' => $byDate['to'],
+                    ]) !!}</p>
+                </div>
+                <div class="content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="well text-center">
+                                <small>{{ __('Credit Transaction') }}</small><br>
+                                <strong>{{ number_format($byDate['credit']) }}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="well text-center">
+                                <small>{{ __('Debit Transaction') }}</small><br>
+                                <strong>{{ number_format($byDate['debit']) }}</strong>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>{{ __('Category Name') }}</th>
+                                    <th>{{ __('Total') }}</th>
+                                </tr>
+                                @foreach ($byDate['category'] as $category)
+                                    <tr>
+                                        <td>
+                                            {{ $category['name'] }}
+                                        </td>
+                                        <td>
+                                            {{ number_format($category['total']) }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
         <div class="col-md-6">
-            {!! $lava->render('PieChart', 'TypeCounter', 'type-counter') !!}
-            <div class="chart">
-                <div id="type-counter"></div>
+
+            <div class="card">
+                <div class="header">
+                    <h4 class="title">{{ __('Forever Statistics') }}</h4>
+                    <p class="category">{{ __('Statistics from the begin until now') }}</p>
+                </div>
+                <div class="content">
+                    {{-- {!! $lava->render('PieChart', 'TypeCounter', 'type-counter') !!}
+                    <div class="chart">
+                        <div id="type-counter"></div>
+                    </div>
+                    <hr>
+                    {!! $lava->render('BarChart', 'CategoryCounter', 'category-counter') !!}
+                    <div class="chart">
+                        <div id="category-counter"></div>
+                    </div> --}}
+                </div>
             </div>
+
         </div>
     </div>
 

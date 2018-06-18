@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Model\TransactionCategory;
 use Illuminate\Http\Request;
 use Khill\Lavacharts\Lavacharts;
+use Carbon\Carbon;
 
 /**
  * Route Handler for Dashboard.
@@ -69,6 +70,9 @@ class HomeController extends Controller
         // Transaction category counter
         $this->sumByTransactionCategory();
 
+        // Count by date
+        $this->countByDate();
+
         // Pass all chart data to view
         $this->data['lava'] = $this->lava;
 
@@ -76,7 +80,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Transaction counter by type (Credit or Debit).
+     * Transaction counter by type (Credit or Debit) and generate chart.
      *
      * @return void
      */
@@ -95,17 +99,15 @@ class HomeController extends Controller
     }
 
     /**
-     * Sum all transaction by category.
+     * Sum all transaction by category and generate chart.
      *
      * @return void
      */
     public function sumByTransactionCategory()
     {
+        $user = $this->request->user();
         $categoryCounter = [];
-        $categories = TransactionCategory::doesntHave('parent')
-                                        ->where('user_id', $this->request->user()->id)
-                                        ->where('show_on_stats', 1)
-                                        ->get();
+        $categories = $user->categories()->doesntHave('parent')->where('show_on_stats', 1)->get();
 
         foreach ($categories as $category) {
             $total = $category->transactions()->sum('amount');
@@ -132,5 +134,38 @@ class HomeController extends Controller
         }
 
         $this->lava->BarChart('CategoryCounter', $categoryChart);
+    }
+
+    public function countByDate()
+    {
+        $startDate = (new Carbon('first day of last month'))->format('Y-m-d');
+        $endDate = Carbon::now()->format('Y-m-d');
+
+        $this->data['byDate']['from'] = $startDate;
+        $this->data['byDate']['to'] = $endDate;
+        $this->data['byDate']['category'] = [];
+
+        $this->data['byDate']['credit'] = $this->request->user()->transactions()->where('type', 'cr')->whereBetween('date', [
+            $startDate, $endDate
+        ])->sum('amount');
+
+        $this->data['byDate']['debit'] = $this->request->user()->transactions()->where('type', 'db')->whereBetween('date', [
+            $startDate, $endDate
+        ])->sum('amount');
+
+        $categories = $this->request->user()->categories()->where('show_on_stats', 1)->get();
+        foreach ($categories as $category) {
+            $total = $category->transactions()->whereBetween('date', [
+                $startDate, $endDate
+            ])->sum('amount');
+            if ($total == 0) {
+                continue;
+            }
+
+            $this->data['byDate']['category'][] = [
+                'name' => $category->name,
+                'total' => $total
+            ];
+        }
     }
 }
