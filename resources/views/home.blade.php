@@ -146,7 +146,7 @@
                     <p class="category">{{ __('Statistics from the begin until now') }}</p>
                 </div>
                 <div class="content">
-                    {{-- {!! $lava->render('PieChart', 'TypeCounter', 'type-counter') !!}
+                    {!! $lava->render('PieChart', 'TypeCounter', 'type-counter') !!}
                     <div class="chart">
                         <div id="type-counter"></div>
                     </div>
@@ -154,7 +154,7 @@
                     {!! $lava->render('BarChart', 'CategoryCounter', 'category-counter') !!}
                     <div class="chart">
                         <div id="category-counter"></div>
-                    </div> --}}
+                    </div>
                 </div>
             </div>
 
