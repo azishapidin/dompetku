@@ -137,7 +137,7 @@ class HomeController extends Controller
 
     public function countByDate()
     {
-        $startDate = (new Carbon('first day of last month'))->format('Y-m-d');
+        $startDate = (new Carbon('first day of this month'))->format('Y-m-d');
         $endDate = Carbon::now()->format('Y-m-d');
 
         $this->data['byDate']['from'] = $startDate;
