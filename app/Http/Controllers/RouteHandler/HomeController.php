@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\RouteHandler;
 
 use App\Http\Controllers\Controller;
-use App\Model\TransactionCategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Khill\Lavacharts\Lavacharts;
-use Carbon\Carbon;
 
 /**
  * Route Handler for Dashboard.
@@ -146,25 +145,25 @@ class HomeController extends Controller
         $this->data['byDate']['category'] = [];
 
         $this->data['byDate']['credit'] = $this->request->user()->transactions()->where('type', 'cr')->whereBetween('date', [
-            $startDate, $endDate
+            $startDate, $endDate,
         ])->sum('amount');
 
         $this->data['byDate']['debit'] = $this->request->user()->transactions()->where('type', 'db')->whereBetween('date', [
-            $startDate, $endDate
+            $startDate, $endDate,
         ])->sum('amount');
 
         $categories = $this->request->user()->categories()->where('show_on_stats', 1)->get();
         foreach ($categories as $category) {
             $total = $category->transactions()->whereBetween('date', [
-                $startDate, $endDate
+                $startDate, $endDate,
             ])->sum('amount');
             if ($total == 0) {
                 continue;
             }
 
             $this->data['byDate']['category'][] = [
-                'name' => $category->name,
-                'total' => $total
+                'name'  => $category->name,
+                'total' => $total,
             ];
         }
     }
