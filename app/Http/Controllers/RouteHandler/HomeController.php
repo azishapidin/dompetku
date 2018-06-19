@@ -153,13 +153,13 @@ class HomeController extends Controller
 
         $this->data['byDate']['credit'] = $this->request->user()->transactions()->where('type', 'cr')->whereBetween('date', [
             $startDate, $endDate,
-        ])->whereHas('category', function($q){
+        ])->whereHas('category', function ($q) {
             $q->where('show_on_stats', 1);
         })->sum('amount');
 
         $this->data['byDate']['debit'] = $this->request->user()->transactions()->where('type', 'db')->whereBetween('date', [
             $startDate, $endDate,
-        ])->whereHas('category', function($q){
+        ])->whereHas('category', function ($q) {
             $q->where('show_on_stats', 1);
         })->sum('amount');
 
