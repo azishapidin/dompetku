@@ -95,9 +95,9 @@
             <div class="card">
                 <div class="header">
                     <h4 class="title">{{ __('Statistics') }}</h4>
-                    <p class="category">{!! __('Statistics from <strong>:start</strong> to <strong>:end</strong>', [
-                        'start' => $byDate['from'],
-                        'end' => $byDate['to'],
+                    <p class="category">{!! __('Statistics from :start to :end', [
+                        'start' => '<strong>'.$byDate['from'].'</strong>',
+                        'end' => '<strong>'.$byDate['to'].'</strong>',
                     ]) !!}</p>
                 </div>
                 <div class="content">
@@ -162,8 +162,7 @@
 
             <div class="card">
                 <div class="header">
-                    <h4 class="title">{{ __('Forever Statistics') }}</h4>
-                    <p class="category">{{ __('Statistics from the begin until now') }}</p>
+                    <h4 class="title">{{ __('Transaction Counter') }}</h4>
                 </div>
                 <div class="content">
                     {!! $lava->render('PieChart', 'TypeCounter', 'type-counter') !!}

@@ -18,6 +18,11 @@
     "Forgot Password": "Lupa Password",
     "Reset Password": "Update Password",
 
+    "Show": "Tampilkan",
+    "Statistics": "Statistik",
+    "Statistics from :start to :end": "Statistik dari :start sampai :end",
+    "Credit Transaction": "Transaksi Kredit",
+    "Debit Transaction": "Transaksi Debit",
     "Account": "Akun",
     "Accounts": "Akun",
     "Account Name": "Nama Akun",
