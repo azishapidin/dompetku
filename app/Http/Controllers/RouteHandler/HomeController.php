@@ -59,9 +59,15 @@ class HomeController extends Controller
     public function index()
     {
         $this->data['account_count'] = $this->request->user()->accounts()->count();
-        $this->data['transaction_count'] = $this->request->user()->transactions()->count();
-        $this->data['credit_count'] = $this->request->user()->transactions()->where('type', 'cr')->count();
-        $this->data['debit_count'] = $this->request->user()->transactions()->where('type', 'db')->count();
+        $this->data['transaction_count'] = $this->request->user()->transactions()->whereHas('category', function ($q) {
+            $q->where('show_on_stats', 1);
+        })->count();
+        $this->data['credit_count'] = $this->request->user()->transactions()->whereHas('category', function ($q) {
+            $q->where('show_on_stats', 1);
+        })->where('type', 'cr')->count();
+        $this->data['debit_count'] = $this->request->user()->transactions()->whereHas('category', function ($q) {
+            $q->where('show_on_stats', 1);
+        })->where('type', 'db')->count();
 
         // Transaction type counter
         $this->countByType();
