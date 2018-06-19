@@ -116,13 +116,13 @@
                         </div>
 
                         <form action="" method="GET">
-                            <div class="col-md-3">
+                            {{-- <div class="col-md-3">
                                 <select name="type" class="form-control">
                                     <option value="db">{{ __('Debit') }}</option>
                                     <option value="cr">{{ __('Credit') }}</option>
                                 </select>
-                            </div>
-                            <div class="col-md-6">
+                            </div> --}}
+                            <div class="col-md-8">
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="dates">
                                 </div>
