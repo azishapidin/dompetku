@@ -2,6 +2,7 @@
 @section('title', __('Summary'))
 
 @section('before_script')
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <style>
     .d-flex div {
         padding: 2px 10px;
@@ -113,8 +114,27 @@
                                 <strong>{{ number_format($byDate['debit']) }}</strong>
                             </div>
                         </div>
+
+                        <form action="" method="GET">
+                            <div class="col-md-3">
+                                <select name="type" class="form-control">
+                                    <option value="db">{{ __('Debit') }}</option>
+                                    <option value="cr">{{ __('Credit') }}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="dates">
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <button type="submit" class="btn btn-success">{{ __('Show') }}</button>
+                            </div>
+                        </form>
+
                         <div class="col-md-12">
 
+                            <br>
                             <table class="table table-striped">
                                 <tr>
                                     <th>{{ __('Category Name') }}</th>
@@ -153,7 +173,7 @@
                     <hr>
                     {!! $lava->render('BarChart', 'CategoryCounter', 'category-counter') !!}
                     <div class="chart">
-                        <div id="category-counter"></div>
+                        <div id="category-counter" style="height: 500px;"></div>
                     </div>
                 </div>
             </div>
@@ -165,8 +185,9 @@
 @endsection
 
 @section('after_script')
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <script>
     $('.counter').each(function () {
         $(this).prop('Counter', 0).animate({
@@ -178,6 +199,13 @@
                 $(this).text(Math.ceil(now));
             }
         });
+    });
+    $('input[name="dates"]').daterangepicker({
+        "startDate": "{{ date("Y-F-d", strtotime($byDate['from'])) }}",
+        "endDate": "{{ date("Y-F-d", strtotime($byDate['to'])) }}",
+        locale: {
+            format: 'YYYY-MMMM-DD'
+        }
     });
 </script>
 @endsection

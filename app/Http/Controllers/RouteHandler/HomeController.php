@@ -139,6 +139,13 @@ class HomeController extends Controller
     {
         $startDate = (new Carbon('first day of this month'))->format('Y-m-d');
         $endDate = Carbon::now()->format('Y-m-d');
+        if (!is_null($this->request->get('dates'))) {
+            $dates = explode(' - ', $this->request->get('dates'));
+            if (count($dates) == 2) {
+                $startDate = Carbon::createFromFormat('Y-F-d', $dates[0])->format('Y-m-d');
+                $endDate = Carbon::createFromFormat('Y-F-d', $dates[1])->format('Y-m-d');
+            }
+        }
 
         $this->data['byDate']['from'] = $startDate;
         $this->data['byDate']['to'] = $endDate;
