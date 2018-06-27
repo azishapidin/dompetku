@@ -55,7 +55,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = TransactionCategory::all();
+        $categories = TransactionCategory::where('user_id', $this->request->user()->id)->get();
 
         return view('category.create', [
             'categories' => $categories,
@@ -87,7 +87,7 @@ class CategoryController extends Controller
      */
     public function edit(TransactionCategory $category)
     {
-        $categories = TransactionCategory::all();
+        $categories = TransactionCategory::where('user_id', $this->request->user()->id)->get();
         if ($category->user_id != $this->request->user()->id) {
             abort(403);
         }
