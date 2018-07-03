@@ -60,6 +60,12 @@
                         <p>{{ __('Account') }}</p>
                     </a>
                 </li>
+                <li class="{{ request()->is('transfer/*') ? 'active' : '' }}">
+                    <a href="{{ route('account.transfer') }}">
+                        <i class="pe-7s-shuffle"></i>
+                        <p>{{ __('Transfer Money') }}</p>
+                    </a>
+                </li>
                 <li class="{{ request()->is('transaction/*') || request()->is('transaction') || request()->is('transaction/*/edit') ? 'active' : '' }}">
                     <a href="{{ route('transaction.index') }}">
                         <i class="pe-7s-repeat"></i>

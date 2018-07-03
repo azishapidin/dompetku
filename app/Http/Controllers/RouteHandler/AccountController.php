@@ -5,6 +5,7 @@ namespace App\Http\Controllers\RouteHandler;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AccountStore;
 use App\Model\Account;
+use App\Model\TransactionCategory;
 use Illuminate\Http\Request;
 use Storage;
 
@@ -224,5 +225,18 @@ class AccountController extends Controller
         $account->forceDelete();
 
         return redirect()->route('account.index');
+    }
+
+    /**
+     * Money transfer form.
+     * 
+     * @return \Illuminate\View\View
+     */
+    public function transfer()
+    {
+        $data['accounts'] = $this->request->user()->accounts;
+        $data['categories'] = TransactionCategory::all();
+
+        return view('account.transfer', $data);
     }
 }
