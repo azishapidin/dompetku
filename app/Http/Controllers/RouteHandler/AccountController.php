@@ -4,9 +4,10 @@ namespace App\Http\Controllers\RouteHandler;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AccountStore;
-use App\Model\Account;
+use App\Http\Requests\TransferRequest;
 use App\Model\TransactionCategory;
 use Illuminate\Http\Request;
+use App\Model\Account;
 use Storage;
 
 /**
@@ -238,5 +239,17 @@ class AccountController extends Controller
         $data['categories'] = TransactionCategory::all();
 
         return view('account.transfer', $data);
+    }
+
+    /**
+     * Handle transfer proccess.
+     * 
+     * @param \App\Http\Requests\TransferRequest $request Request from User after Validation
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function transferStore(TransferRequest $request)
+    {
+        dd($this->request->all());
     }
 }

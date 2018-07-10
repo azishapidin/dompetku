@@ -14,7 +14,7 @@
                 <h4 class="title">{{ __('Transfer Money to Another Account') }}</h4>
             </div>
             <div class="content">
-                    {{-- <form action="{{ route('transaction.store', $account->id) }}" method="post" enctype="multipart/form-data"> --}}
+                    <form action="{{ route('account.transfer.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -51,19 +51,6 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            
-                        </div>
-                    </div>
-                        
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <label class="form-label">{{ __('Date') }}</label>
-                                <input class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" placeholder="{{ __('Transaction Date') }}.." type="text"
-                                    value="{{ old('date') }}"> @if ($errors->has('date'))
-                                <small class="text-danger">{{ $errors->first('date') }}</small>
-                                @endif
-                            </div>
                             <div class="form-group">
                                 <label class="form-label">{{ __('Transaction Category') }}</label>
                                 <select name="category_id" class="form-control{{ $errors->has('category_id') ? ' is-invalid' : '' }}">
@@ -77,6 +64,18 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
+                        
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label class="form-label">{{ __('Date') }}</label>
+                                <input class="form-control{{ $errors->has('date') ? ' is-invalid' : '' }}" name="date" placeholder="{{ __('Transaction Date') }}.." type="text"
+                                    value="{{ old('date') }}"> @if ($errors->has('date'))
+                                <small class="text-danger">{{ $errors->first('date') }}</small>
+                                @endif
+                            </div>
+                        </div>
                         <div class="col-md-7">
                             <div class="form-group">
                                 <label class="form-label">{{ __('Memo') }}</label>
@@ -86,23 +85,6 @@
                                 @endif
                             </div>
                         </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <div class="form-label">{{ __('Transaction Attachment') }}</div>
-                                    @for ($input = 1; $input <= config('transaction.max_attachment'); $input++)
-                                        <div class="custom-file" style="margin-bottom: 10px;">
-                                            <input name="attachment[]" type="file">
-                                        </div>
-                                    @endfor
-                                    @if ($errors->has('attachment.*'))
-                                    <small class="text-danger">{{ $errors->first('attachment.*') }}</small>
-                                    @endif
-                                </div>
-                        </div>
-                        <div class="col-md-7"></div>
                     </div>
 
                     <button type="submit" class="btn btn-info btn-fill pull-right">{{ __('Save Transaction') }}</button>
