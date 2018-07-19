@@ -250,6 +250,19 @@ class AccountController extends Controller
      */
     public function transferStore(TransferRequest $request)
     {
-        dd($this->request->all());
+        $posted = $this->request->all();
+
+        $from = $this->request->user()->accounts()->where('id', $posted['from'])->first();
+        $to = $this->request->user()->accounts()->where('id', $posted['to'])->first();
+
+        $from->transfer(
+            $to,
+            $posted['amount'],
+            $posted['category_id'],
+            $posted['date'],
+            $posted['description']
+        );
+
+        return redirect()->route('account.index');
     }
 }
