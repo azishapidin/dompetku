@@ -263,6 +263,6 @@ class AccountController extends Controller
             $posted['description']
         );
 
-        return redirect()->route('account.index');
+        return redirect()->route('transaction.index');
     }
 }
