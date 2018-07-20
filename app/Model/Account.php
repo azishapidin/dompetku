@@ -120,7 +120,7 @@ class Account extends Model
             $builder->save();
 
             // Increase Destination
-            $builder = new TransactionBuilder($payload['account']['origin']);
+            $builder = new TransactionBuilder($payload['account']['destination']);
             $builder->addCredit($payload['amount']);
             if (isset($payload['category_id']) && !is_null($payload['category_id'])) {
                 $builder->setCategory($payload['category_id']);
