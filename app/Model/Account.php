@@ -2,10 +2,10 @@
 
 namespace App\Model;
 
+use App\Http\Controllers\Module\TransactionBuilder;
 use DB;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Http\Controllers\Module\TransactionBuilder;
 
 class Account extends Model
 {
@@ -87,28 +87,28 @@ class Account extends Model
 
     /**
      * Transfer money to another account.
-     * 
+     *
      * @return void
      */
     public function transfer(
-        Account $account,
-        $amount = 0, 
-        $categoryId = null, 
-        $date = '', 
+        self $account,
+        $amount = 0,
+        $categoryId = null,
+        $date = '',
         $description = ''
     ) {
         $payload = [
             'account' => [
-                'origin' => $this,
+                'origin'      => $this,
                 'destination' => $account,
             ],
-            'amount' => $amount,
+            'amount'      => $amount,
             'category_id' => $categoryId,
-            'date' => $date,
-            'description' => 'Transfer from ' . $this->name . ' to ' . $account->name . ': ' . $description,
+            'date'        => $date,
+            'description' => 'Transfer from '.$this->name.' to '.$account->name.': '.$description,
         ];
 
-        \DB::transaction(function() use($payload) {
+        \DB::transaction(function () use ($payload) {
             // Decrease Origin
             $builder = new TransactionBuilder($payload['account']['origin']);
             $builder->addDebit($payload['amount']);
