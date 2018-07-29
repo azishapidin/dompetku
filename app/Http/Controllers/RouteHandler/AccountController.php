@@ -5,9 +5,9 @@ namespace App\Http\Controllers\RouteHandler;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AccountStore;
 use App\Http\Requests\TransferRequest;
+use App\Model\Account;
 use App\Model\TransactionCategory;
 use Illuminate\Http\Request;
-use App\Model\Account;
 use Storage;
 
 /**
@@ -230,7 +230,7 @@ class AccountController extends Controller
 
     /**
      * Money transfer form.
-     * 
+     *
      * @return \Illuminate\View\View
      */
     public function transfer()
@@ -243,9 +243,9 @@ class AccountController extends Controller
 
     /**
      * Handle transfer proccess.
-     * 
+     *
      * @param \App\Http\Requests\TransferRequest $request Request from User after Validation
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function transferStore(TransferRequest $request)
