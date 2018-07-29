@@ -68,17 +68,6 @@ Hola! DompetKu is ready to use!
 
 ## TODO
 
-- [x] Add Frontend Template.
-- [x] Create Model and Migration.
-- [x] Install Authentication (Register, Login, Forgot Password, Reset Password).
-- [x] Templating Authentication.
-- [x] Create Builder Income and Expenses.
-- [x] CRUD Accounts.
-- [x] Form Add Income and Expenses data.
-- [x] Transaction Category.
-- [x] List Data Income and Expenses.
-- [x] Account Settings.
-- [x] Statistics.
 - [ ] Update Profile.
 
 ## License
